@@ -10,8 +10,8 @@ Engine Conventions:-
 
 Ordering in the hierarchy
 Put stuff in folders based on purpose
-Fix layout crash:-
 
+Fix layout crash:-
 Delete current layout under Library folder in "...SpookGameJam\Library\CurrentLayout-default.dwlt"
 Create another empty project in unity then close it
 Go into that empty projects library folder and copy its current layout tile (NewUnityProject\Library\CurrentLayout-default.dwlt)
