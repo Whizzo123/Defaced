@@ -12,7 +12,7 @@ Ordering in the hierarchy
 Put stuff in folders based on purpose
 
 Fix layout crash:-
-Delete current layout under Library folder in "...SpookGameJam\Library\CurrentLayout-default.dwlt"
+Delete current layout under Library folder in "...UkieGameJam2020Project\Library\CurrentLayout-default.dwlt"
 Create another empty project in unity then close it
 Go into that empty projects library folder and copy its current layout tile (NewUnityProject\Library\CurrentLayout-default.dwlt)
 Paste this file back into SpookGameJam\Library folder then restart unity and the issue should be fixed
