@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - ElementalDamage
+  - Pushable
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
