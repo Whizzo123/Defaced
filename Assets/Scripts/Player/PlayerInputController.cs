@@ -16,6 +16,7 @@ public class PlayerInputController : MonoBehaviour
     private GameObject objectBeingBroken;
     public bool canCrouch;
     public bool paused;
+    private Lever lever;
 
     void Start()
     {
@@ -42,7 +43,10 @@ public class PlayerInputController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Destroy(objectBeingBroken);
+                if(objectBeingBroken != null)
+                    Destroy(objectBeingBroken);
+                if (lever != null)
+                    lever.PullLever();
             }
             if (canCrouch)
             {
@@ -81,6 +85,22 @@ public class PlayerInputController : MonoBehaviour
             {
                 objectBeingBroken = other.gameObject;
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.GetComponent<Lever>())
+        {
+            lever = other.gameObject.GetComponent<Lever>();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject == lever.gameObject)
+        {
+            lever = null;
         }
     }
 
