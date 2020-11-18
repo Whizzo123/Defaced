@@ -78,7 +78,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == ("Ground"))
+        if(other.gameObject.tag == ("Ground") || (other.gameObject.GetComponent<Pushable>() && other.gameObject.transform.position.y < this.transform.position.y))
         {
             onGround = true;
             jumpCounter = 0;

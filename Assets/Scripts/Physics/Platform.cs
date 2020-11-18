@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class Platform : Interactable
 {
 
     public bool isVertical;
@@ -12,6 +12,16 @@ public class Platform : MonoBehaviour
     private float direction;
     private Vector2 originPosition;
     private Vector2 targetVector;
+
+    public override void Activate()
+    {
+        move = true;
+    }
+
+    public override void Deactivate()
+    {
+        move = false;
+    }
 
     void Start()
     {
