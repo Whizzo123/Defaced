@@ -9,6 +9,7 @@ public class PlayerInputController : MonoBehaviour
 
     public float HorizontalThreshold;
     private PlayerMovementController mv_controller;
+    private PlayerHealthController h_controller;
     private Rigidbody2D playerBody;
     public bool hasStrength;
     private GameObject objectBeingPushed;
@@ -17,6 +18,7 @@ public class PlayerInputController : MonoBehaviour
     void Start()
     {
         mv_controller = GetComponent<PlayerMovementController>();
+        h_controller = GetComponent<PlayerHealthController>();
         hasStrength = true;
     }
 
@@ -43,7 +45,7 @@ public class PlayerInputController : MonoBehaviour
 
         if(this.transform.position.y < -20f)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            h_controller.Die();
         }
     }
 
@@ -70,6 +72,7 @@ public class PlayerInputController : MonoBehaviour
         {
             if(other.gameObject == objectBeingPushed)
             {
+                other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 other.gameObject.GetComponent<Rigidbody2D>().Sleep();
                 objectBeingPushed = null;
             }
