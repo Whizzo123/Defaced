@@ -7,7 +7,7 @@ public enum MASKS { CROUCH, DOUBLEJUMP, ELEMENTALRESISTANCE, STRENGTH, NONE };
 public class SwitchMask : MonoBehaviour
 {
 
-    private MASKS currentMask;
+    public MASKS currentMask;
     private PlayerMovementController mv_controller;
     private PlayerHealthController h_controller;
     private PlayerInputController in_controller;
