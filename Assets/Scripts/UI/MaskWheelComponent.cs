@@ -8,6 +8,8 @@ public class MaskWheelComponent : MonoBehaviour, IPointerEnterHandler, IPointerE
 {
 
     public MASKS equippedMask;
+    public Image foreground;
+    public Image background;
 
     void Start()
     {
@@ -18,6 +20,12 @@ public class MaskWheelComponent : MonoBehaviour, IPointerEnterHandler, IPointerE
     void Update()
     {
 
+    }
+
+    public void SetUpSprites(MaskWheelSprite sprites)
+    {
+        foreground.sprite = sprites.foreground;
+        background.sprite = sprites.background;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
