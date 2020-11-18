@@ -13,13 +13,14 @@ public class PlayerInputController : MonoBehaviour
     private Rigidbody2D playerBody;
     public bool hasStrength;
     private GameObject objectBeingPushed;
-
+    public bool canCrouch;
 
     void Start()
     {
         mv_controller = GetComponent<PlayerMovementController>();
         h_controller = GetComponent<PlayerHealthController>();
-        hasStrength = true;
+        hasStrength = false;
+        canCrouch = false;
     }
 
     void Update()
@@ -34,15 +35,17 @@ public class PlayerInputController : MonoBehaviour
             //Player jump
             mv_controller.Jump();
         }
-        if(Input.GetKeyDown(KeyCode.S))
+        if (canCrouch)
         {
-            mv_controller.Crouch(true);
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                mv_controller.Crouch(true);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                mv_controller.Crouch(false);
+            }
         }
-        if(Input.GetKeyUp(KeyCode.S))
-        {
-            mv_controller.Crouch(false);
-        }
-
         if(this.transform.position.y < -20f)
         {
             h_controller.Die();
