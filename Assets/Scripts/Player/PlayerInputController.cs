@@ -13,7 +13,9 @@ public class PlayerInputController : MonoBehaviour
     private Rigidbody2D playerBody;
     public bool hasStrength;
     private GameObject objectBeingPushed;
+    private GameObject objectBeingBroken;
     public bool canCrouch;
+    public bool paused;
 
     void Start()
     {
@@ -21,29 +23,37 @@ public class PlayerInputController : MonoBehaviour
         h_controller = GetComponent<PlayerHealthController>();
         hasStrength = false;
         canCrouch = false;
+        paused = false;
     }
 
     void Update()
     {
-        if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) > HorizontalThreshold)
+        if (!paused)
         {
-            //Move player
-            mv_controller.Move(Input.GetAxisRaw("Horizontal"));
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            //Player jump
-            mv_controller.Jump();
-        }
-        if (canCrouch)
-        {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > HorizontalThreshold)
             {
-                mv_controller.Crouch(true);
+                //Move player
+                mv_controller.Move(Input.GetAxisRaw("Horizontal"));
             }
-            if (Input.GetKeyUp(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                mv_controller.Crouch(false);
+                //Player jump
+                mv_controller.Jump();
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(objectBeingBroken);
+            }
+            if (canCrouch)
+            {
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    mv_controller.Crouch(true);
+                }
+                if (Input.GetKeyUp(KeyCode.S))
+                {
+                    mv_controller.Crouch(false);
+                }
             }
         }
         if(this.transform.position.y < -20f)
@@ -60,11 +70,16 @@ public class PlayerInputController : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<Rigidbody2D>())
                 {
-                    other.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+                    Debug.Log("Pushing");
+                    other.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                     objectBeingPushed = other.gameObject;
                 }
                 else
                     Debug.LogError("You've forgotten to attach a rigidbody to this!!");
+            }
+            if (other.gameObject.tag == "Breakable")
+            {
+                objectBeingBroken = other.gameObject;
             }
         }
     }
@@ -76,8 +91,15 @@ public class PlayerInputController : MonoBehaviour
             if(other.gameObject == objectBeingPushed)
             {
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                other.gameObject.GetComponent<Rigidbody2D>().Sleep();
+                other.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 objectBeingPushed = null;
+            }
+        }
+        if (other.gameObject.tag == "Breakable")
+        {
+            if (other.gameObject == objectBeingBroken)
+            {
+                objectBeingBroken = null;
             }
         }
     }
