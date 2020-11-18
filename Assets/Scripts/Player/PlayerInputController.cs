@@ -98,9 +98,12 @@ public class PlayerInputController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject == lever.gameObject)
+        if (other.gameObject != null)
         {
-            lever = null;
+            if (other.gameObject == lever.gameObject)
+            {
+                lever = null;
+            }
         }
     }
 

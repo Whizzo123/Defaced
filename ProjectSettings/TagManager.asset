@@ -8,6 +8,7 @@ TagManager:
   - ElementalDamage
   - Pushable
   - Checkpoint
+  - Flower
   layers:
   - Default
   - TransparentFX
