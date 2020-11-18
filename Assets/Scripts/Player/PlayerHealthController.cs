@@ -30,7 +30,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(other.gameObject.tag == elementalDamageObjectTag)
         {
-            if (!hasElementalResistance)
+            if (!hasElementalResistance && !other.gameObject.GetComponent<ElectricBlock>().IsToggled())
             {
                 Debug.Log("Player dead");
                 Die();
