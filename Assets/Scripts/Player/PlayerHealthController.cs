@@ -10,18 +10,22 @@ public class PlayerHealthController : MonoBehaviour
 
 
     public string elementalDamageObjectTag;
+    public bool hasElementalResistance;
 
     void Start()
     {
-
+        hasElementalResistance = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == elementalDamageObjectTag)
         {
-            Debug.Log("Player dead");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (!hasElementalResistance)
+            {
+                Debug.Log("Player dead");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
