@@ -15,6 +15,7 @@ public class PlayerInputController : MonoBehaviour
     private GameObject objectBeingPushed;
     private GameObject objectBeingBroken;
     public bool canCrouch;
+    public bool paused;
 
     void Start()
     {
@@ -22,33 +23,37 @@ public class PlayerInputController : MonoBehaviour
         h_controller = GetComponent<PlayerHealthController>();
         hasStrength = false;
         canCrouch = false;
+        paused = false;
     }
 
     void Update()
     {
-        if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) > HorizontalThreshold)
+        if (!paused)
         {
-            //Move player
-            mv_controller.Move(Input.GetAxisRaw("Horizontal"));
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            //Player jump
-            mv_controller.Jump();
-        }
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            Destroy(objectBeingBroken);
-        }
-        if (canCrouch)
-        {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > HorizontalThreshold)
             {
-                mv_controller.Crouch(true);
+                //Move player
+                mv_controller.Move(Input.GetAxisRaw("Horizontal"));
             }
-            if (Input.GetKeyUp(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                mv_controller.Crouch(false);
+                //Player jump
+                mv_controller.Jump();
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(objectBeingBroken);
+            }
+            if (canCrouch)
+            {
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    mv_controller.Crouch(true);
+                }
+                if (Input.GetKeyUp(KeyCode.S))
+                {
+                    mv_controller.Crouch(false);
+                }
             }
         }
         if(this.transform.position.y < -20f)
