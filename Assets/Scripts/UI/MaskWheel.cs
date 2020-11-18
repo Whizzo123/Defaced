@@ -13,7 +13,7 @@ public class MaskWheel : MonoBehaviour
     void Start()
     {
         container.SetActive(false);
-        wheelSegments = container.GetComponentsInChildren<MaskWheelComponent>();
+        wheelSegments = container.GetComponentsInChildren<MaskWheelComponent>(true);
     }
 
     void Update()
@@ -27,6 +27,7 @@ public class MaskWheel : MonoBehaviour
         {
             if (selectedSegment != null)
             {
+                Debug.Log("Switching mask to: " + selectedSegment.equippedMask);
                 FindObjectOfType<SwitchMask>().Switch((int)selectedSegment.equippedMask);
             }
             container.SetActive(false);
@@ -36,10 +37,12 @@ public class MaskWheel : MonoBehaviour
 
     private MaskWheelComponent GrabFreeComponent()
     {
+        Debug.Log("Wheel Segments: " + wheelSegments.Length);
         foreach (MaskWheelComponent wheelComponent in wheelSegments)
         {
             if(wheelComponent.equippedMask == MASKS.NONE)
             {
+                Debug.Log("Returning wheel segment");
                 return wheelComponent;
             }
         }
@@ -51,10 +54,12 @@ public class MaskWheel : MonoBehaviour
         MaskWheelComponent segment = GrabFreeComponent();
         if (segment != null)
         {
+            Debug.Log("Adding mask to wheel");
             segment.equippedMask = maskToAdd;
             segment.gameObject.GetComponent<Image>().sprite = sprite;
         }
-        Debug.LogError("Have filled up the mask wheel");
+        else
+            Debug.LogError("Have filled up the mask wheel");
     }
 
     public void SetSegmentSelected(MaskWheelComponent component)

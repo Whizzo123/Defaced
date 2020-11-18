@@ -11,7 +11,7 @@ public class MaskWheelComponent : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     void Start()
     {
-        equippedMask = MASKS.NONE;
+
 
     }
 
