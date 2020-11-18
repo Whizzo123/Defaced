@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - ElementalDamage
+  - Pushable
   layers:
   - Default
   - TransparentFX
