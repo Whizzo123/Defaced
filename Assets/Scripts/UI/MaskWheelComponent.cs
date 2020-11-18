@@ -14,7 +14,6 @@ public class MaskWheelComponent : MonoBehaviour, IPointerEnterHandler, IPointerE
     void Start()
     {
 
-
     }
 
     void Update()
@@ -30,14 +29,16 @@ public class MaskWheelComponent : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Color tempColor = background.color;
+        tempColor.a = .5f;
+        background.color = tempColor;
         FindObjectOfType<MaskWheel>().SetSegmentSelected(this);
-        GetComponent<Image>().color = Color.grey;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         FindObjectOfType<MaskWheel>().SetSegmentDeselected();
-        GetComponent<Image>().color = Color.white;
+        background.color = Color.white;
     }
 
 }
