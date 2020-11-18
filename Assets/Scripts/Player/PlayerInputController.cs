@@ -100,9 +100,12 @@ public class PlayerInputController : MonoBehaviour
     {
         if (other.gameObject != null)
         {
-            if (other.gameObject == lever.gameObject)
+            if (other.gameObject.GetComponent<Lever>())
             {
-                lever = null;
+                if (other.gameObject == lever.gameObject)
+                {
+                    lever = null;
+                }
             }
         }
     }
