@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public bool isActive = false;
     private Queue<string> sentences;
+    public NPC talkingNPC;
 
     void Start()
     {
@@ -62,5 +63,6 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isActive", false);
         isActive = false;
+        talkingNPC.GiveMask();
     }
 }

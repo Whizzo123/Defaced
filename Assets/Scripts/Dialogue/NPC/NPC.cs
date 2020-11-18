@@ -12,6 +12,9 @@ public class NPC : MonoBehaviour
     public Text PressE;
     public DialogueManager dialogueManager;
     DialogueTrigger dialogueTrigger;
+    public Prerequisite prerequisite;
+    public MASKS maskToGive;
+    public Sprite spriteToUseOnMaskWheel;
 
     private void Start()
     {
@@ -32,7 +35,8 @@ public class NPC : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.isActive)
             {
                 
-                dialogueTrigger.TriggerDialogue();   
+                dialogueTrigger.TriggerDialogue();
+                dialogueManager.talkingNPC = this;
             }
             else if (Input.GetKeyDown(KeyCode.E) && dialogueManager.isActive)
             {
@@ -45,5 +49,13 @@ public class NPC : MonoBehaviour
         }
 
 
+    }
+
+    public void GiveMask()
+    {
+        if(prerequisite.CheckAgainst(player.GetComponent<PlayerCollectionController>().collectedItems))
+        {
+            FindObjectOfType<MaskWheel>().AddMaskToWheel(maskToGive, spriteToUseOnMaskWheel);
+        }
     }
 }
