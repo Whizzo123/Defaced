@@ -5,10 +5,11 @@ using UnityEngine;
 public class ElectricBlock : MonoBehaviour
 {
     public BoxCollider2D playerCollider;
-    public SwitchMask switchMask;
-    public PlayerHealthController player;
     bool isToggled;
-    public int playerExit = 0;
+    private int playerExit = 0;
+    public bool isPeriodic;
+    public float periodicTime;
+    private float periodicTimeCounter;
     void Start()
     {
         gameObject.tag = "ElementalDamage";
@@ -17,17 +18,29 @@ public class ElectricBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.GetComponent<BoxCollider2D>().IsTouching(playerCollider) && switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
+        if (isPeriodic)
         {
-
-            StartCoroutine(ToggleElectricity());
-
+            if (periodicTimeCounter <= 0)
+            {
+                isToggled = !isToggled;
+                periodicTimeCounter = periodicTime;
+            }
+            periodicTimeCounter -= Time.deltaTime;
+            
         }
-        else if(playerExit == 1 && switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
+        else
         {
-            player.Die();
-        }
+            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(playerCollider) && FindObjectOfType<SwitchMask>().currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
+            {
 
+                StartCoroutine(ToggleElectricity());
+
+            }
+            else if (playerExit == 1 && FindObjectOfType<SwitchMask>().currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
+            {
+                FindObjectOfType<PlayerHealthController>().Die();
+            }
+        }
     }
 
     IEnumerator ToggleElectricity()
@@ -48,5 +61,10 @@ public class ElectricBlock : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerExit++;
+    }
+
+    public bool IsToggled()
+    {
+        return isToggled;
     }
 }
