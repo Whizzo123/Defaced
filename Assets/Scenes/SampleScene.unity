@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 467323600}
   dialogueText: {fileID: 301736160}
+  animator: {fileID: 1364452080}
 --- !u!4 &86050061
 Transform:
   m_ObjectHideFlags: 0
@@ -680,11 +681,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Buddyman
+    name: epic dude
     sentences:
-    - asdfa
-    - adsfasdf
-    - asdfdsaf
+    - HeliCopters are an element of surprise for the united nations of the world
+    - ba bo bey bo scat mans world ba bo bey bo
+    - yuh yuh gucci gang yuh yuh (incoherent rapping)
 --- !u!114 &1320977762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +922,7 @@ GameObject:
   - component: {fileID: 1364452077}
   - component: {fileID: 1364452079}
   - component: {fileID: 1364452078}
+  - component: {fileID: 1364452080}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -946,8 +948,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: -177}
-  m_SizeDelta: {x: 785.7814, y: 153.54451}
+  m_AnchoredPosition: {x: 0, y: -342}
+  m_SizeDelta: {x: 785.7814, y: 155.6039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1364452078
 MonoBehaviour:
@@ -987,6 +989,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364452076}
   m_CullTransparentMesh: 0
+--- !u!95 &1364452080
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364452076}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2a376b5c8ec41b48bec853d787d259a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1539799837
 GameObject:
   m_ObjectHideFlags: 0
