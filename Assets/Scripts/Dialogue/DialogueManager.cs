@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
 
     public Animator animator;
-    public bool active = false;
+    public bool isActive = false;
     private Queue<string> sentences;
 
     void Start()
@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     {
 
         animator.SetBool("isActive", true);
-        active = true;
+        isActive = true;
 
         nameText.text = dialogue.name;
 
@@ -61,6 +61,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isActive", false);
-        active = false;
+        isActive = false;
     }
 }
