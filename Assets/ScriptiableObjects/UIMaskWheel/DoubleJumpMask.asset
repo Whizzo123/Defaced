@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de49f2f550cb20469559aa7d5ba46d7, type: 3}
   m_Name: DoubleJumpMask
   m_EditorClassIdentifier: 
-  foreground: {fileID: 0}
-  background: {fileID: 0}
+  foreground: {fileID: 21300000, guid: c0725d45d5b8e2f43b573a11470c5515, type: 3}
+  background: {fileID: 21300000, guid: dd6d03c1f5e655f48baebdca4e86c594, type: 3}
