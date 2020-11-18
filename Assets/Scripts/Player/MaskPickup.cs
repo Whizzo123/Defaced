@@ -7,7 +7,7 @@ public class MaskPickup : MonoBehaviour
 {
 
     public MASKS maskToAdd;
-    public Sprite maskSpriteForWheel;
+    public MaskWheelSprite maskSpriteForWheel;
 
     public void Pickup()
     {
