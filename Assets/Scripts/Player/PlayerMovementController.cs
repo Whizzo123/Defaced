@@ -6,13 +6,18 @@ public class PlayerMovementController : MonoBehaviour
 {
 
     private Rigidbody2D playerBody;
+    public BoxCollider2D normalCollider;
+    public BoxCollider2D crouchCollider;
+    private PlayerInputController input_Controller;
+
     public float moveSpeed;
     public float cappedVelocity;
     public float jumpPower;
     public float frictionTimeDivider;
-    private PlayerInputController input_Controller;
+    
     private int jumpCounter;
     public int jumpLimit;
+
     private bool onGround;
 
     void Start()
@@ -53,6 +58,20 @@ public class PlayerMovementController : MonoBehaviour
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
             playerBody.velocity += jumpVelocity;
             jumpCounter++;
+        }
+    }
+
+    public void Crouch(bool toggle)
+    {
+        if (toggle)
+        {
+            normalCollider.enabled = false;
+            crouchCollider.enabled = true;
+        }
+        else
+        {
+            normalCollider.enabled = true;
+            crouchCollider.enabled = false;
         }
     }
 

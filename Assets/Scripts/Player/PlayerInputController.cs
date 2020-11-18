@@ -27,6 +27,14 @@ public class PlayerInputController : MonoBehaviour
             //Player jump
             mv_controller.Jump();
         }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            mv_controller.Crouch(true);
+        }
+        if(Input.GetKeyUp(KeyCode.S))
+        {
+            mv_controller.Crouch(false);
+        }
 
         if(this.transform.position.y < -20f)
         {
