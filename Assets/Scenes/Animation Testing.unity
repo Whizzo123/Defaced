@@ -224,6 +224,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowersCollected: 0
   collectedItems: []
+--- !u!95 &56583666
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56583664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 42ff84880535fc44e8387225031224f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &56583670 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6606872465085703623, guid: d0b8166cfeadff444b82a22ee0a15af6, type: 3}
@@ -2790,6 +2809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57483faa2030dd489d7670ac2a6931d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMask: 0
 --- !u!1 &1213842780
 GameObject:
   m_ObjectHideFlags: 0
