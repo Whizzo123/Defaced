@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
         animator.SetBool("isActive", true);
         isActive = true;
+        FindObjectOfType<PauseSystem>().FreezePlayer();
 
         nameText.text = dialogue.name;
 
@@ -62,5 +63,6 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isActive", false);
         isActive = false;
+        FindObjectOfType<PauseSystem>().UnFreezePlayer();
     }
 }

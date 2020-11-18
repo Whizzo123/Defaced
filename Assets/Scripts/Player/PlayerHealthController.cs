@@ -35,6 +35,10 @@ public class PlayerHealthController : MonoBehaviour
                 Debug.Log("Player dead");
                 Die();
             }
+            else
+            {
+
+            }
         }
         else if(other.gameObject.tag == checkpointTag)
         {
