@@ -412,10 +412,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0fbd81cd4f90146bfb355d75ee884a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalCollider: {fileID: 0}
+  crouchCollider: {fileID: 0}
   moveSpeed: 3
   cappedVelocity: 4
   jumpPower: 5
   frictionTimeDivider: 0.2
+  jumpLimit: 0
 --- !u!114 &1235262507
 MonoBehaviour:
   m_ObjectHideFlags: 0
