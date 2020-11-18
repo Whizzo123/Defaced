@@ -21,12 +21,11 @@ public class ElectricBlock : MonoBehaviour
         {
 
             StartCoroutine(ToggleElectricity());
-            if (playerExit == 1 && switchMask.currentMask != MASKS.ELEMENTALRESISTANCE)
-            {
-                player.Die();
-            }
-                
 
+        }
+        else if(playerExit == 1 && switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
+        {
+            player.Die();
         }
 
     }
