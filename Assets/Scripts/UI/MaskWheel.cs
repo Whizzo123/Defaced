@@ -49,14 +49,15 @@ public class MaskWheel : MonoBehaviour
         return null;
     }
 
-    public void AddMaskToWheel(MASKS maskToAdd, Sprite sprite)
+    public void AddMaskToWheel(MASKS maskToAdd, MaskWheelSprite sprite)
     {
-        MaskWheelComponent segment = GrabFreeComponent();
+        MaskWheelComponent segment = wheelSegments[(int)maskToAdd];
+       
         if (segment != null)
         {
             Debug.Log("Adding mask to wheel");
             segment.equippedMask = maskToAdd;
-            segment.gameObject.GetComponent<Image>().sprite = sprite;
+            segment.SetUpSprites(sprite);
         }
         else
             Debug.LogError("Have filled up the mask wheel");

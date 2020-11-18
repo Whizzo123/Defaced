@@ -14,7 +14,7 @@ public class NPC : MonoBehaviour
     DialogueTrigger dialogueTrigger;
     public Prerequisite prerequisite;
     public MASKS maskToGive;
-    public Sprite spriteToUseOnMaskWheel;
+    public MaskWheelSprite spriteToUseOnMaskWheel;
 
     private void Start()
     {
@@ -53,9 +53,16 @@ public class NPC : MonoBehaviour
 
     public void GiveMask()
     {
-        if(prerequisite.CheckAgainst(player.GetComponent<PlayerCollectionController>().collectedItems))
+        if (prerequisite == null)
         {
             FindObjectOfType<MaskWheel>().AddMaskToWheel(maskToGive, spriteToUseOnMaskWheel);
+        }
+        else
+        {
+            if (prerequisite.CheckAgainst(player.GetComponent<PlayerCollectionController>().collectedItems))
+            {
+                FindObjectOfType<MaskWheel>().AddMaskToWheel(maskToGive, spriteToUseOnMaskWheel);
+            }
         }
     }
 }
