@@ -13,6 +13,7 @@ public class PlayerInputController : MonoBehaviour
     private Rigidbody2D playerBody;
     public bool hasStrength;
     private GameObject objectBeingPushed;
+    private GameObject objectBeingBroken;
     public bool canCrouch;
 
     void Start()
@@ -34,6 +35,10 @@ public class PlayerInputController : MonoBehaviour
         {
             //Player jump
             mv_controller.Jump();
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Destroy(objectBeingBroken);
         }
         if (canCrouch)
         {
@@ -60,11 +65,16 @@ public class PlayerInputController : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<Rigidbody2D>())
                 {
-                    other.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+                    Debug.Log("Pushing");
+                    other.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                     objectBeingPushed = other.gameObject;
                 }
                 else
                     Debug.LogError("You've forgotten to attach a rigidbody to this!!");
+            }
+            if (other.gameObject.tag == "Breakable")
+            {
+                objectBeingBroken = other.gameObject;
             }
         }
     }
@@ -76,8 +86,15 @@ public class PlayerInputController : MonoBehaviour
             if(other.gameObject == objectBeingPushed)
             {
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                other.gameObject.GetComponent<Rigidbody2D>().Sleep();
+                other.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 objectBeingPushed = null;
+            }
+        }
+        if (other.gameObject.tag == "Breakable")
+        {
+            if (other.gameObject == objectBeingBroken)
+            {
+                objectBeingBroken = null;
             }
         }
     }

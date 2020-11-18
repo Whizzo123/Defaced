@@ -39,10 +39,8 @@ public class Platform : MonoBehaviour
                 this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (Time.deltaTime * direction));
             }
             float distance = Vector2.Distance(this.transform.position, originPosition);
-            Debug.Log("Distance: " + distance);
             if (distance > moveDistance)
             {
-                Debug.Log("Got to target");
                 direction *= -1;
                 originPosition = this.transform.position;
             }
