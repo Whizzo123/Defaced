@@ -29,13 +29,13 @@ public class ProjectileLauncher : MonoBehaviour
             {
                 //Fire
                 fireRateCounter = fireRate;
-                direction = Vector3.Normalize(targetGO.transform.position - firePoint.transform.position);
-                direction += new Vector2(0, 5);
+                direction = Vector3.Normalize((targetGO.transform.position + new Vector3(0,1,0)) - firePoint.transform.position);
                 GameObject go = (GameObject)Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
                 go.GetComponent<Rigidbody2D>().velocity += new Vector2(direction.x * projectileSpeed, (direction.y) * projectileSpeed);
             }
             fireRateCounter -= Time.deltaTime;
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -43,6 +43,7 @@ public class ProjectileLauncher : MonoBehaviour
         if(other.gameObject.GetComponent<PlayerInputController>())
         {
             targetGO = other.gameObject;
+            
         }
     }
 

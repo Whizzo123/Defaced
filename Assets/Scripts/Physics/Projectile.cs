@@ -18,5 +18,18 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         timeAlive -= Time.deltaTime;
+        if(timeAlive >= 2)
+        {
+            Object.Destroy(this.gameObject);
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerInputController>())
+        {
+            collision.gameObject.GetComponent<PlayerHealthController>().Die();
+        }
     }
 }
