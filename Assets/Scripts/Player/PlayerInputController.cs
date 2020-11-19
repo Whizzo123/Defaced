@@ -32,7 +32,7 @@ public class PlayerInputController : MonoBehaviour
     void Update()
     {
         animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-        if (!paused)
+        if (!paused && !GetComponent<PlayerHealthController>().isDead)
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > HorizontalThreshold)
             {
