@@ -21,16 +21,19 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (useTalkCounter)
         {
-            if(talkCounterCurrent < talkCounter)
+            if (talkCounterCurrent < talkCounter)
             {
                 FindObjectOfType<DialogueManager>().StartDialogue(talkCounterDialogue[talkCounterCurrent]);
             }
+            else
+                thisNPC.GiveMask();
         }
         else
         {
             if (thisNPC.prerequisite == null || thisNPC.prerequisite.CheckAgainst(thisNPC.player.GetComponent<PlayerCollectionController>().collectedItems))
             {
                 FindObjectOfType<DialogueManager>().StartDialogue(taskCompletionDialogue);
+                thisNPC.GiveMask();
             }
             else
             {

@@ -67,6 +67,5 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isActive", false);
         isActive = false;
         pauseSystem.UnFreezePlayer();
-        talkingNPC.GiveMask();
     }
 }
