@@ -5,11 +5,10 @@ using UnityEngine;
 public class ElectricBlock : MonoBehaviour
 {
     public BoxCollider2D playerCollider;
+    public SwitchMask switchMask;
+    public PlayerHealthController player;
     bool isToggled;
-    private int playerExit = 0;
-    public bool isPeriodic;
-    public float periodicTime;
-    private float periodicTimeCounter;
+    public int playerExit = 0;
     void Start()
     {
         gameObject.tag = "ElementalDamage";
@@ -18,29 +17,17 @@ public class ElectricBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPeriodic)
+        if(gameObject.GetComponent<BoxCollider2D>().IsTouching(playerCollider) && switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
         {
-            if (periodicTimeCounter <= 0)
-            {
-                isToggled = !isToggled;
-                periodicTimeCounter = periodicTime;
-            }
-            periodicTimeCounter -= Time.deltaTime;
-            
+
+            StartCoroutine(ToggleElectricity());
+
         }
-        else
+        else if(playerExit == 1 && switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
         {
-            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(playerCollider) && FindObjectOfType<SwitchMask>().currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
-            {
-
-                StartCoroutine(ToggleElectricity());
-
-            }
-            else if (playerExit == 1 && FindObjectOfType<SwitchMask>().currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
-            {
-                FindObjectOfType<PlayerHealthController>().Die();
-            }
+            player.Die();
         }
+
     }
 
     IEnumerator ToggleElectricity()
@@ -61,10 +48,5 @@ public class ElectricBlock : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerExit++;
-    }
-
-    public bool IsToggled()
-    {
-        return isToggled;
     }
 }
