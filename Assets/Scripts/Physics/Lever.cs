@@ -7,24 +7,13 @@ public class Lever : MonoBehaviour
 {
 
     public bool isActive;
-    public GameObject interactable;
-
-    void Start()
-    {
-        
-    }
+    public GameObject[] interactables;
 
     public void PullLever()
     {
-        if (!isActive)
+        for (int i = 0; i < interactables.Length; i++)
         {
-            interactable.GetComponent<Interactable>().Activate();
-            isActive = true;
-        }
-        else
-        {
-            interactable.GetComponent<Interactable>().Deactivate();
-            isActive = false;
+            interactables[i].GetComponent<Interactable>().Toggle();
         }
     }
 

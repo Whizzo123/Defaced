@@ -16,15 +16,11 @@ public class Door : Interactable
         doorCollider = GetComponent<BoxCollider2D>();
     }
 
-    public override void Activate()
+    public override void Toggle()
     {
-        PlayAnimation(true);
+        PlayAnimation(!isOpen);
     }
 
-    public override void Deactivate()
-    {
-        PlayAnimation(false);
-    }
 
     void Update()
     {

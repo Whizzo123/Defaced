@@ -18,10 +18,10 @@ public class Generator : MonoBehaviour
     }
     public void StartGenerator()
     {
-        interactable.GetComponent<Interactable>().Activate();
+        interactable.GetComponent<Interactable>().Toggle();
         isActive = true;
         StartCoroutine(RunDuration());
-        interactable.GetComponent<Interactable>().Deactivate();
+        interactable.GetComponent<Interactable>().Toggle();
         isActive = false;
     }
     IEnumerator RunDuration()

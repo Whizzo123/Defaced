@@ -13,14 +13,9 @@ public class Platform : Interactable
     private Vector2 originPosition;
     private Vector2 targetVector;
 
-    public override void Activate()
+    public override void Toggle()
     {
-        move = true;
-    }
-
-    public override void Deactivate()
-    {
-        move = false;
+        move = !move;
     }
 
     void Start()
