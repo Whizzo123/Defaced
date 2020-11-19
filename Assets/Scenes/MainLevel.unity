@@ -23955,6 +23955,36 @@ Transform:
   m_Father: {fileID: 1336450027}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &710394170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710394171}
+  m_Layer: 0
+  m_Name: Ceiling Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710394171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710394170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.267, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1681944956}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &714959535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40004,7 +40034,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -46813,12 +46843,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 415519f0c614be1408bdaf8716864993, type: 3}
   - m_RefCount: 34
     m_Data: {fileID: 21300000, guid: 8520741255c88f5479c0b54e4d150a01, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 607c59f1cc9b3d04da549381670af927, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 0dc4929761e17fa4cae380487f6356a7, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 0dc4929761e17fa4cae380487f6356a7, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 607c59f1cc9b3d04da549381670af927, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1057
     m_Data:
@@ -51802,7 +51832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcBoxCollider2D: {fileID: 1389423243}
-  player: {fileID: 0}
+  player: {fileID: 1681944966}
   PressE: {fileID: 373110130}
   dialogueManager: {fileID: 59463417}
   prerequisite: {fileID: 0}
@@ -53965,7 +53995,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.1, y: 0.91, z: -0.93471706}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 710394171}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54031,6 +54062,7 @@ MonoBehaviour:
   normalCollider: {fileID: 1681944966}
   crouchCollider: {fileID: 1681944963}
   isCrouching: 0
+  ceilingCheck: {fileID: 0}
   moveSpeed: 4
   cappedVelocity: 4
   jumpPower: 9
@@ -54148,8 +54180,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04917729, y: -0.4425931}
-  m_Size: {x: 1.4625409, y: 1.7576017}
+  m_Offset: {x: -0.04917729, y: -0.32547867}
+  m_Size: {x: 1.4625409, y: 1.5233729}
   m_Direction: 0
 --- !u!1 &1690200446
 GameObject:

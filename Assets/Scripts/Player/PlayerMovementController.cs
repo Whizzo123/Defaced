@@ -10,6 +10,7 @@ public class PlayerMovementController : MonoBehaviour
     public BoxCollider2D crouchCollider;
     public bool isCrouching;
     private PlayerInputController input_Controller;
+    public GameObject ceilingCheck;
 
     public float moveSpeed;
     public float cappedVelocity;
@@ -81,7 +82,7 @@ public class PlayerMovementController : MonoBehaviour
             crouchCollider.enabled = false;
             isCrouching = true;
         }
-        else
+        else if(!toggle)
         {
             crouchCollider.enabled = true;
             isCrouching = false;
