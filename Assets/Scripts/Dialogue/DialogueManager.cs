@@ -7,7 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
-
+    public PauseSystem pauseSystem;
     public Animator animator;
     public bool isActive = false;
     private Queue<string> sentences;
@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
+        pauseSystem = FindObjectOfType<PauseSystem>();
         sentences = new Queue<string>();
     }
 
@@ -23,7 +24,7 @@ public class DialogueManager : MonoBehaviour
 
         animator.SetBool("isActive", true);
         isActive = true;
-
+        pauseSystem.FreezePlayer();
         nameText.text = dialogue.name;
 
         sentences.Clear();
@@ -63,6 +64,7 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isActive", false);
         isActive = false;
+        pauseSystem.UnFreezePlayer();
         talkingNPC.GiveMask();
     }
 }

@@ -17,9 +17,11 @@ public class PlayerInputController : MonoBehaviour
     public bool canCrouch;
     public bool paused;
     private Lever lever;
+    public Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         mv_controller = GetComponent<PlayerMovementController>();
         h_controller = GetComponent<PlayerHealthController>();
         hasStrength = false;
@@ -29,12 +31,14 @@ public class PlayerInputController : MonoBehaviour
 
     void Update()
     {
+        animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         if (!paused)
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > HorizontalThreshold)
             {
                 //Move player
                 mv_controller.Move(Input.GetAxisRaw("Horizontal"));
+                
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
