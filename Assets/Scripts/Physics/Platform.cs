@@ -15,7 +15,10 @@ public class Platform : Interactable
 
     public override void Toggle()
     {
+        
+        Debug.Log("TOGGLE");
         move = !move;
+        Debug.Log(move);
     }
 
     void Start()
@@ -23,11 +26,11 @@ public class Platform : Interactable
         originPosition = this.transform.position;
         if (startLeft)
         {
-            direction = -1;
+            direction = -2;
         }
         else
         {
-            direction = 1;
+            direction = 2;
         }
     }
 

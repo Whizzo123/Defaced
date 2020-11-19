@@ -11,9 +11,12 @@ public class Lever : MonoBehaviour
 
     public void PullLever()
     {
+
         for (int i = 0; i < interactables.Length; i++)
         {
-            interactables[i].GetComponent<Interactable>().Toggle();
+            Debug.Log("CALLED");
+            Interactable interactable = interactables[i].GetComponent<Interactable>();
+            interactable.Toggle();
         }
     }
 
