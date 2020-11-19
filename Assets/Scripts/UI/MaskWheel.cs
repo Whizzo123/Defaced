@@ -35,7 +35,7 @@ public class MaskWheel : MonoBehaviour
         }
     }
 
-    private MaskWheelComponent GrabFreeComponent()
+    public MaskWheelComponent GrabFreeComponent()
     {
         Debug.Log("Wheel Segments: " + wheelSegments.Length);
         foreach (MaskWheelComponent wheelComponent in wheelSegments)
