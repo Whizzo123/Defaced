@@ -8,13 +8,14 @@ public class NPC : MonoBehaviour
 
     //make sure to create one for each npc
     public BoxCollider2D npcBoxCollider2D;
-    public BoxCollider2D player;
+    public CapsuleCollider2D player;
     public Text PressE;
     public DialogueManager dialogueManager;
     DialogueTrigger dialogueTrigger;
     public Prerequisite prerequisite;
     public MASKS maskToGive;
     public MaskWheelSprite spriteToUseOnMaskWheel;
+    public Sprite dialogueSprite;
 
     private void Start()
     {
@@ -35,9 +36,8 @@ public class NPC : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.isActive)
             {
-                
-                dialogueTrigger.TriggerDialogue();
                 dialogueManager.talkingNPC = this;
+                dialogueTrigger.TriggerDialogue(this);
             }
             else if (Input.GetKeyDown(KeyCode.E) && dialogueManager.isActive)
             {

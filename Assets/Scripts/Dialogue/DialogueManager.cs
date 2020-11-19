@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+    public Image npcPortrait;
     public PauseSystem pauseSystem;
     public Animator animator;
     public bool isActive = false;
@@ -21,11 +22,12 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-
+        Debug.Log("Starting dialogue");
         animator.SetBool("isActive", true);
         isActive = true;
         pauseSystem.FreezePlayer();
         nameText.text = dialogue.name;
+        npcPortrait.sprite = talkingNPC.dialogueSprite;
 
         sentences.Clear();
 
@@ -65,6 +67,5 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isActive", false);
         isActive = false;
         pauseSystem.UnFreezePlayer();
-        talkingNPC.GiveMask();
     }
 }
