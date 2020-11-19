@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-
+        Debug.Log("Starting dialogue");
         animator.SetBool("isActive", true);
         isActive = true;
         pauseSystem.FreezePlayer();
