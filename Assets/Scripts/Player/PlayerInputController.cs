@@ -107,6 +107,7 @@ public class PlayerInputController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.name + " HELLO THERE");
         if(other.gameObject.GetComponent<Lever>())
         {
             lever = other.gameObject.GetComponent<Lever>();
