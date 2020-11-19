@@ -439,6 +439,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2806965926459112238, guid: fec4400f37c8d014c994aa28ce48c7a4, type: 3}
   m_PrefabInstance: {fileID: 59463415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &59463417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2806965926459112239, guid: fec4400f37c8d014c994aa28ce48c7a4, type: 3}
+  m_PrefabInstance: {fileID: 59463415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355253d8939cacf41a196cdfcb7506e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &63414595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22279,6 +22290,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6959926611832154528, guid: 0e7bd32d45445c243ad6dc2ab780ab68, type: 3}
   m_PrefabInstance: {fileID: 373110125}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &373110130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8945113385391048624, guid: 0e7bd32d45445c243ad6dc2ab780ab68, type: 3}
+  m_PrefabInstance: {fileID: 373110125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &398372332
 GameObject:
   m_ObjectHideFlags: 0
@@ -51693,6 +51715,8 @@ GameObject:
   - component: {fileID: 1389423239}
   - component: {fileID: 1389423240}
   - component: {fileID: 1389423241}
+  - component: {fileID: 1389423242}
+  - component: {fileID: 1389423243}
   m_Layer: 0
   m_Name: DoubleJump
   m_TagString: Untagged
@@ -51777,14 +51801,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2393b730b4d47a6439481b3924ff3fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcBoxCollider2D: {fileID: 0}
+  npcBoxCollider2D: {fileID: 1389423243}
   player: {fileID: 0}
-  PressE: {fileID: 0}
-  dialogueManager: {fileID: 0}
+  PressE: {fileID: 373110130}
+  dialogueManager: {fileID: 59463417}
   prerequisite: {fileID: 0}
-  maskToGive: 0
-  spriteToUseOnMaskWheel: {fileID: 0}
+  maskToGive: 1
+  spriteToUseOnMaskWheel: {fileID: 11400000, guid: 01df5ed1170f93342a92df0e6ba80aa3, type: 2}
   dialogueSprite: {fileID: 21300000, guid: 9eef1cfabdc9e174ab60f09ac8a02318, type: 3}
+--- !u!114 &1389423242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389423238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21fa67b44a493e419b8b949f771e7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Big Boi
+    sentences:
+    - Hello my name is Big Boi
+    - Here have this mask
+--- !u!61 &1389423243
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389423238}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.631579, y: 3.1578948}
+    newSize: {x: 1.953125, y: 2.34375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.631579, y: 3.1578948}
+  m_EdgeRadius: 0
 --- !u!114 &1395961551 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6696098300857440225, guid: ff70cc05a1df99b4e90a71c2071fe5fb, type: 3}
