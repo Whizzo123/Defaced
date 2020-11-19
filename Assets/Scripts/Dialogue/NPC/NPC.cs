@@ -37,7 +37,7 @@ public class NPC : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.isActive)
             {
                 dialogueManager.talkingNPC = this;
-                dialogueTrigger.TriggerDialogue();
+                dialogueTrigger.TriggerDialogue(this);
             }
             else if (Input.GetKeyDown(KeyCode.E) && dialogueManager.isActive)
             {
