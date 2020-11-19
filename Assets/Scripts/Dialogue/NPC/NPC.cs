@@ -8,7 +8,7 @@ public class NPC : MonoBehaviour
 
     //make sure to create one for each npc
     public BoxCollider2D npcBoxCollider2D;
-    public BoxCollider2D player;
+    public CapsuleCollider2D player;
     public Text PressE;
     public DialogueManager dialogueManager;
     DialogueTrigger dialogueTrigger;
