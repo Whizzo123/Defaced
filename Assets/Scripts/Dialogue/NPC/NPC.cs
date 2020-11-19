@@ -15,6 +15,7 @@ public class NPC : MonoBehaviour
     public Prerequisite prerequisite;
     public MASKS maskToGive;
     public MaskWheelSprite spriteToUseOnMaskWheel;
+    public Sprite dialogueSprite;
 
     private void Start()
     {
