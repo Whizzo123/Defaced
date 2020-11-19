@@ -20,16 +20,25 @@ public class AnimationHandler : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        if (horizontal > 0.01f)
+
+        if (!FindObjectOfType<PlayerInputController>().paused)
         {
-            spriteRenderer.flipX = false;
-        }
-        else if (horizontal < -0.01f)
-        {
-            spriteRenderer.flipX = true;
+            if (horizontal > 0.01f)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (horizontal < -0.01f)
+            {
+                spriteRenderer.flipX = true;
+            }
         }
 
-        switch(switchMask.currentMask)
+        animator.SetFloat("Velocity", Mathf.Abs(horizontal));
+        animator.SetBool("isJumping", playerMovementController.isJumping);
+        animator.SetBool("isCrouching", playerMovementController.isCrouching);
+        animator.SetBool("isPaused", FindObjectOfType<PlayerInputController>().paused);
+
+        switch (switchMask.currentMask)
         {
             case MASKS.CROUCH:
                 animator.SetInteger("Mask", 0);
@@ -47,8 +56,7 @@ public class AnimationHandler : MonoBehaviour
                 break;
         }
 
-        animator.SetFloat("Velocity", Mathf.Abs(horizontal));
-
-        animator.SetBool("isJumping", playerMovementController.isJumping);
+       
+        
     }
 }

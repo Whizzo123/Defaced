@@ -8,7 +8,7 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D playerBody;
     public BoxCollider2D normalCollider;
     public BoxCollider2D crouchCollider;
-    
+    public bool isCrouching;
     private PlayerInputController input_Controller;
 
     public float moveSpeed;
@@ -75,11 +75,13 @@ public class PlayerMovementController : MonoBehaviour
         {
             normalCollider.enabled = false;
             crouchCollider.enabled = true;
+            isCrouching = true;
         }
         else
         {
             normalCollider.enabled = true;
             crouchCollider.enabled = false;
+            isCrouching = false;
         }
     }
 

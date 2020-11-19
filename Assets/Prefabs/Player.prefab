@@ -195,11 +195,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalCollider: {fileID: 6606872465085703623}
   crouchCollider: {fileID: 6606872465085703618}
+  isCrouching: 0
   moveSpeed: 4
   cappedVelocity: 4
   jumpPower: 5
   frictionTimeDivider: 0.2
+  jumpCounter: 0
   jumpLimit: 1
+  isJumping: 0
 --- !u!114 &8322801029045974769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,3 +266,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  switchMask: {fileID: 0}
+  playerMovementController: {fileID: 0}

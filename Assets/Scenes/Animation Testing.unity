@@ -3564,6 +3564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1179237453}
   dialogueText: {fileID: 921386609}
+  pauseSystem: {fileID: 0}
   animator: {fileID: 515720859}
   isActive: 0
   talkingNPC: {fileID: 0}
