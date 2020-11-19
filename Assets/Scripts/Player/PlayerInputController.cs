@@ -29,7 +29,7 @@ public class PlayerInputController : MonoBehaviour
         if (!enableCheats)
         {
             hasStrength = false;
-            canCrouch = false;
+            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.CROUCH, sprites[0]);
             paused = false;
         }
         else
@@ -39,6 +39,7 @@ public class PlayerInputController : MonoBehaviour
             FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.STRENGTH, sprites[2]);
             FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.ELEMENTALRESISTANCE, sprites[3]);
         }
+        FindObjectOfType<SwitchMask>().Switch(0);
     }
 
     void Update()
