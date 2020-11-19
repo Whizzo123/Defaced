@@ -5,14 +5,8 @@ using System.Collections;
 public class Interactable : MonoBehaviour
 {
 
-    public virtual void Activate()
+    public virtual void Toggle()
     {
 
     }
-
-    public virtual void Deactivate()
-    {
-
-    }
-
 }
