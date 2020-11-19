@@ -16,8 +16,9 @@ public class PlayerMovementController : MonoBehaviour
     public float jumpPower;
     public float frictionTimeDivider;
     
-    private int jumpCounter;
+    public int jumpCounter;
     public int jumpLimit;
+    public bool isJumping;
 
     private bool onGround;
 
@@ -41,6 +42,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(playerBody.velocity.y);
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < input_Controller.HorizontalThreshold)
         {
             if (Mathf.Abs(playerBody.velocity.x) > .1f)
@@ -59,8 +61,10 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (jumpCounter < jumpLimit)
         {
+            isJumping = true;
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
             playerBody.velocity += jumpVelocity;
+            
             jumpCounter++;
         }
     }
@@ -85,6 +89,7 @@ public class PlayerMovementController : MonoBehaviour
         {
             onGround = true;
             jumpCounter = 0;
+            isJumping = false;
         }
     }
 

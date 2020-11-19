@@ -7,13 +7,14 @@ public class AnimationHandler : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public SwitchMask switchMask;
-
+    public PlayerMovementController playerMovementController;
     float horizontal;
     void Start()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         switchMask = FindObjectOfType<SwitchMask>();
+        playerMovementController = GetComponent<PlayerMovementController>();
     }
 
     void Update()
@@ -47,5 +48,7 @@ public class AnimationHandler : MonoBehaviour
         }
 
         animator.SetFloat("Velocity", Mathf.Abs(horizontal));
+
+        animator.SetBool("isJumping", playerMovementController.isJumping);
     }
 }
