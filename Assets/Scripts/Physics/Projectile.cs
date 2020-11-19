@@ -29,7 +29,8 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerInputController>())
         {
-            collision.gameObject.GetComponent<PlayerHealthController>().isDead = true;
+            if(!collision.gameObject.GetComponent<PlayerHealthController>().isDead)
+                collision.gameObject.GetComponent<PlayerHealthController>().isDead = true;
             Destroy(this.gameObject);
         }
     }

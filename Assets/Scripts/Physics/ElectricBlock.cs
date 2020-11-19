@@ -15,6 +15,8 @@ public class ElectricBlock : MonoBehaviour
     void Start()
     {
         gameObject.tag = "ElementalDamage";
+        switchMask = FindObjectOfType<SwitchMask>();
+        player = FindObjectOfType<PlayerHealthController>();
     }
 
     // Update is called once per frame
@@ -31,15 +33,19 @@ public class ElectricBlock : MonoBehaviour
 
         }
         else
-        if (gameObject.GetComponent<BoxCollider2D>().IsTouching(playerCollider) && switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
+        if (playerCollider != null)
         {
+            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(playerCollider) && switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
+            {
 
-            StartCoroutine(ToggleElectricity());
+                StartCoroutine(ToggleElectricity());
 
-        }
-        else if(playerExit == 1 && switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
-        {
-            player.Die();
+            }
+            else if (playerExit == 1 && switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
+            {
+                if(!player.isDead)
+                    player.isDead = true;
+            }
         }
 
     }

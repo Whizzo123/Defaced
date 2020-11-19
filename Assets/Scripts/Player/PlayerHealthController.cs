@@ -48,8 +48,10 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(animHandler.animator.GetCurrentAnimatorStateInfo(0).IsName("DEATH"))
         {
+            Debug.Log("Inside death state");
             AnimatorStateInfo info = animHandler.animator.GetCurrentAnimatorStateInfo(0);
-            if(info.normalizedTime > 1f)
+            Debug.Log("Normalized time: " + info.normalizedTime);
+            if(info.normalizedTime > .99f)
             {
                 Die();
             }
