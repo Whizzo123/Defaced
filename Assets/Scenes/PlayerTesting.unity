@@ -1770,7 +1770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810129659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0017509721, y: -0.271, z: -0.85094523}
+  m_LocalPosition: {x: -0.97, y: -0.271, z: -0.85094523}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2578,16 +2578,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1085225651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3779d30f3213eb4f9c7360fc74926a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 21168ec33a0e10341a0558e9543dea49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundEffectClips:
-  - name: 
-    clip: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
+  SoundEffectClips: []
   simultaneousPlaying: 0
 --- !u!4 &1085225653
 Transform:
@@ -2841,6 +2835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57483faa2030dd489d7670ac2a6931d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMask: 0
 --- !u!1 &1213842780
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,6 +3628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1179237453}
   dialogueText: {fileID: 921386609}
+  pauseSystem: {fileID: 0}
   animator: {fileID: 515720859}
   isActive: 0
   talkingNPC: {fileID: 0}
@@ -5083,7 +5079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2045803632
 RectTransform:
   m_ObjectHideFlags: 0
