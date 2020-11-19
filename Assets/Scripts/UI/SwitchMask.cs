@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public enum MASKS { CROUCH, DOUBLEJUMP, ELEMENTALRESISTANCE, STRENGTH, NONE };
+public enum MASKS { CROUCH, DOUBLEJUMP, STRENGTH, ELEMENTALRESISTANCE, NONE };
 
 public class SwitchMask : MonoBehaviour
 {
@@ -32,12 +32,12 @@ public class SwitchMask : MonoBehaviour
                 SetProperties(false, false, 2, false);
                 break;
             case 2:
-                currentMask = MASKS.ELEMENTALRESISTANCE;
-                SetProperties(false, false, 1, true);
-                break;
-            case 3:
                 currentMask = MASKS.STRENGTH;
                 SetProperties(false, true, 1, false);
+                break;
+            case 3:
+                currentMask = MASKS.ELEMENTALRESISTANCE;
+                SetProperties(false, false, 1, true);
                 break;
             case 4:
                 currentMask = MASKS.NONE;

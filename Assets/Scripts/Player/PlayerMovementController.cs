@@ -15,6 +15,7 @@ public class PlayerMovementController : MonoBehaviour
     public float cappedVelocity;
     public float jumpPower;
     public float frictionTimeDivider;
+    public float cappedJumpVelocity;
     
     public int jumpCounter;
     public int jumpLimit;
@@ -42,7 +43,6 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(playerBody.velocity.y);
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < input_Controller.HorizontalThreshold)
         {
             if (Mathf.Abs(playerBody.velocity.x) > .1f)
@@ -64,7 +64,12 @@ public class PlayerMovementController : MonoBehaviour
             isJumping = true;
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
             playerBody.velocity += jumpVelocity;
-            
+            if (Mathf.Abs(playerBody.velocity.y) > cappedJumpVelocity)
+            {
+                Debug.Log("Exceeding jump cap velocity is " + Mathf.Abs(playerBody.velocity.y) + " capped velocity " + cappedJumpVelocity);
+                playerBody.velocity = new Vector2(playerBody.velocity.x, cappedJumpVelocity);
+            }
+
             jumpCounter++;
         }
     }
@@ -87,7 +92,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == ("Ground") || (other.gameObject.GetComponent<Pushable>() && other.gameObject.transform.position.y < this.transform.position.y))
+        if((other.gameObject.tag == ("Ground") || (other.gameObject.GetComponent<Pushable>() && other.gameObject.transform.position.y < this.transform.position.y)))
         {
             onGround = true;
             jumpCounter = 0;
