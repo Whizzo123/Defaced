@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 1618286548935551294}
   - component: {fileID: 3703396549269207907}
   - component: {fileID: 4085631804923250448}
+  - component: {fileID: 5287157269678351908}
   m_Layer: 0
   m_Name: tileElectricTop
   m_TagString: Untagged
@@ -237,6 +238,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5287157269678351908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206375057708812715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111695055bf69904aa895992205dd003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollider: {fileID: 0}
+  isPeriodic: 0
+  periodicTime: 0
 --- !u!1 &7894735401002255107
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ElectricBlock : MonoBehaviour
 {
-    public BoxCollider2D playerCollider;
+    public CapsuleCollider2D playerCollider;
     private SwitchMask switchMask;
     private PlayerHealthController player;
     bool isToggled;
@@ -17,6 +17,7 @@ public class ElectricBlock : MonoBehaviour
         gameObject.tag = "ElementalDamage";
         switchMask = FindObjectOfType<SwitchMask>();
         player = FindObjectOfType<PlayerHealthController>();
+        playerCollider = FindObjectOfType<PlayerInputController>().gameObject.GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame

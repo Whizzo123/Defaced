@@ -3,12 +3,13 @@ using System.Collections;
 public class Generator : MonoBehaviour
 {
     public bool isActive;
-    public GameObject interactable;
+    public GameObject[] interactables;
     public void AttempToStart()
     {
-        if (GetComponent<PlayerHealthController>().hasElementalResistance && !isActive)
+        if (FindObjectOfType<PlayerHealthController>().hasElementalResistance && !isActive)
         {
-            if (interactable != null)
+            Debug.Log("GEN");
+            if (interactables != null)
             {
                 StartGenerator();
             }
@@ -18,11 +19,23 @@ public class Generator : MonoBehaviour
     }
     public void StartGenerator()
     {
-        interactable.GetComponent<Interactable>().Toggle();
-        isActive = true;
+        Debug.Log("Started");
+        for (int i = 0; i < interactables.Length; i++)
+        {
+            Debug.Log("CALLED");
+            Interactable interactable = interactables[i].GetComponent<Interactable>();
+            interactable.Toggle();
+            isActive = true;
+        }
+
         StartCoroutine(RunDuration());
-        interactable.GetComponent<Interactable>().Toggle();
-        isActive = false;
+        for (int i = 0; i < interactables.Length; i++)
+        {
+            Debug.Log("CALLED");
+            Interactable interactable = interactables[i].GetComponent<Interactable>();
+            interactable.Toggle();
+            isActive = false;
+        }
     }
     IEnumerator RunDuration()
     {

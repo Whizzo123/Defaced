@@ -17,6 +17,7 @@ public class PlayerInputController : MonoBehaviour
     public bool canCrouch;
     public bool paused;
     private Lever lever;
+    private Generator gen;
     public Animator animator;
     public bool enableCheats;
     public MaskWheelSprite[] sprites;
@@ -64,6 +65,8 @@ public class PlayerInputController : MonoBehaviour
                     Destroy(objectBeingBroken);
                 if (lever != null)
                     lever.PullLever();
+                if (gen != null)
+                    gen.AttempToStart();
             }
             if (canCrouch)
             {
@@ -87,6 +90,7 @@ public class PlayerInputController : MonoBehaviour
     {
         if(hasStrength)
         {
+            Debug.Log("Has STrenght");
             if(other.gameObject.tag == "Pushable")
             {
                 if (other.gameObject.GetComponent<Rigidbody2D>())
@@ -112,6 +116,17 @@ public class PlayerInputController : MonoBehaviour
         {
             lever = other.gameObject.GetComponent<Lever>();
         }
+        if (other.gameObject.GetComponent<Generator>())
+        {
+            gen = other.gameObject.GetComponent<Generator>();
+        }
+        if (hasStrength)
+        {
+            if (other.gameObject.tag == "Breakable")
+            {
+                objectBeingBroken = other.gameObject;
+            }
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -121,6 +136,10 @@ public class PlayerInputController : MonoBehaviour
             if (other.gameObject.GetComponent<Lever>())
             {
                 lever = null;
+            }
+            if (other.gameObject.tag == "Breakable")
+            {
+                objectBeingBroken = null;
             }
         }
     }
@@ -143,6 +162,10 @@ public class PlayerInputController : MonoBehaviour
                 objectBeingBroken = null;
             }
         }
+                    if (other.gameObject.tag == "Breakable")
+            {
+                objectBeingBroken = other.gameObject;
+            }
     }
 
 }
