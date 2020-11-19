@@ -10,12 +10,12 @@ public class CutsceneManager : MonoBehaviour
     public Sprite[] cutscenes;
     public Image screen;
     public int[] cutsceneDuration;
-
+    public AudioSystem system;
     private float currentCutsceneDuration;
 
     private int cutsceneCounter;
 
-    public Scene nextScene;
+    public string nextScene;
 
     void Start()
     {
@@ -30,13 +30,18 @@ public class CutsceneManager : MonoBehaviour
             if (currentCutsceneDuration <= 0)
             {
                 cutsceneCounter++;
+                if (cutsceneCounter == 9)
+                    system.PlaySound("Slap", screen.gameObject);
                 screen.sprite = cutscenes[cutsceneCounter];
                 currentCutsceneDuration = cutsceneDuration[cutsceneCounter];
             }
             currentCutsceneDuration -= Time.deltaTime;
         }
-        //Load up next scene
-        SceneManager.LoadScene(nextScene.name);
+        else
+        {
+            //Load up next scene
+            SceneManager.LoadScene(nextScene);
+        }
     }
 
 }
