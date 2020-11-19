@@ -1225,7 +1225,6 @@ GameObject:
   - component: {fileID: 586106726}
   - component: {fileID: 586106725}
   - component: {fileID: 586106727}
-  - component: {fileID: 586106728}
   m_Layer: 0
   m_Name: ElementalDamageObject
   m_TagString: ElementalDamage
@@ -1324,21 +1323,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &586106728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586106724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111695055bf69904aa895992205dd003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollider: {fileID: 56583670}
-  isPeriodic: 0
-  periodicTime: 0
 --- !u!1 &642573173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,7 +2841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57483faa2030dd489d7670ac2a6931d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMask: 0
 --- !u!1 &1213842780
 GameObject:
   m_ObjectHideFlags: 0

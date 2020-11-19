@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4625626430229211032}
   - component: {fileID: 1723612934674303260}
   m_Layer: 0
-  m_Name: _ileTop3
+  m_Name: Still Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1881825033
+  m_SortingLayer: 1
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 4d7dd4f551b28ae499da37104644b228, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -153,9 +153,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1881825033
+  m_SortingLayer: 1
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 4d7dd4f551b28ae499da37104644b228, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -235,9 +235,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1881825033
+  m_SortingLayer: 1
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 4d7dd4f551b28ae499da37104644b228, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -317,9 +317,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1881825033
+  m_SortingLayer: 1
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 4d7dd4f551b28ae499da37104644b228, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
