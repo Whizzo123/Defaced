@@ -120,10 +120,7 @@ public class PlayerInputController : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Lever>())
             {
-                if (other.gameObject == lever.gameObject)
-                {
-                    lever = null;
-                }
+                lever = null;
             }
         }
     }
