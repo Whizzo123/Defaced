@@ -44,13 +44,6 @@ public class Door : Interactable
     {
         isOpen = isOpening;
 
-        if (isOpen)
-        {
-            doorAnimator.Play("door_open");
-        }
-        else
-        {
-            doorAnimator.Play("door_close");
-        }
+        doorAnimator.SetBool("Opening", isOpen);
     }
 }

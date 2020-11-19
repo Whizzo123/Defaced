@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class AnimationHandler : MonoBehaviour
 {
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
-    public SwitchMask switchMask;
-    public PlayerMovementController playerMovementController;
+    public Animator animator { get; private set; }
+    private SpriteRenderer spriteRenderer;
+    private SwitchMask switchMask;
+    private PlayerMovementController playerMovementController;
     float horizontal;
     void Start()
     {
         animator = GetComponent<Animator>();
+        if (animator == null)
+            Debug.LogError("You've forgotten the animator");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+            Debug.LogError("You've forgotten the spriterenderer");
         switchMask = FindObjectOfType<SwitchMask>();
         playerMovementController = GetComponent<PlayerMovementController>();
     }

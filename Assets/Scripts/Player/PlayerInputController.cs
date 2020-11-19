@@ -18,15 +18,27 @@ public class PlayerInputController : MonoBehaviour
     public bool paused;
     private Lever lever;
     public Animator animator;
+    public bool enableCheats;
+    public MaskWheelSprite[] sprites;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         mv_controller = GetComponent<PlayerMovementController>();
         h_controller = GetComponent<PlayerHealthController>();
-        hasStrength = false;
-        canCrouch = false;
-        paused = false;
+        if (!enableCheats)
+        {
+            hasStrength = false;
+            canCrouch = false;
+            paused = false;
+        }
+        else
+        {
+            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.CROUCH, sprites[0]);
+            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.DOUBLEJUMP, sprites[1]);
+            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.STRENGTH, sprites[2]);
+            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.ELEMENTALRESISTANCE, sprites[3]);
+        }
     }
 
     void Update()
