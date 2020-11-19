@@ -24021,36 +24021,6 @@ Transform:
   m_Father: {fileID: 1336450027}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &710394170
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710394171}
-  m_Layer: 0
-  m_Name: Ceiling Check
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &710394171
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710394170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.267, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1681944956}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &714959535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24363,9 +24333,9 @@ GameObject:
   - component: {fileID: 779563256}
   - component: {fileID: 779563255}
   - component: {fileID: 779563257}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling
-  m_TagString: Untagged
+  m_TagString: Ceiling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47040,7 +47010,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 895411915}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 83073895bcbf5544fbbe5ff1fa614039, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -50838,6 +50808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 4512438699054039263, guid: 73ad660d017d01747a8b8edc6c788a70, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 5502253195537607359, guid: 73ad660d017d01747a8b8edc6c788a70, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -54276,7 +54250,6 @@ Transform:
   m_LocalPosition: {x: -2.1, y: 0.91, z: -0.93471706}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 710394171}
   - {fileID: 2137283975}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -54297,7 +54270,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 83073895bcbf5544fbbe5ff1fa614039, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -54343,9 +54316,9 @@ MonoBehaviour:
   normalCollider: {fileID: 1681944966}
   crouchCollider: {fileID: 1681944963}
   isCrouching: 0
-  ceilingCheck: {fileID: 0}
-  moveSpeed: 4
-  cappedVelocity: 4
+  ceiling: 0
+  moveSpeed: 10
+  cappedVelocity: 5
   jumpPower: 9
   frictionTimeDivider: 0.5
   cappedJumpVelocity: 20
@@ -128986,13 +128959,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137283974}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.6985862, w: 0.71552587}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1681944956}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -88.627}
 --- !u!114 &2137283976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129007,11 +128980,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.66
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.2
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 095f2a70
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -129021,7 +128994,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightOuterRadius: 8.78
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
