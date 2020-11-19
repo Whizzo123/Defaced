@@ -64,7 +64,12 @@ public class AudioSystem : MonoBehaviour
         {
             Debug.LogError("Attempting to play music from an object that doesn't have an audio source component");
         }
-        AudioClip clip = FindClip(sound)
+        AudioClip clip = FindClip(musicName);
+        if(clip != null)
+        {
+            source.clip = clip;
+            source.Play();
+        }
     }
 
     public AudioClip FindClip(string clipName)
