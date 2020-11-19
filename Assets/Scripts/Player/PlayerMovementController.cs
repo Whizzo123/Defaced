@@ -10,7 +10,7 @@ public class PlayerMovementController : MonoBehaviour
     public BoxCollider2D crouchCollider;
     public bool isCrouching;
     private PlayerInputController input_Controller;
-    public GameObject ceilingCheck;
+    public bool ceiling;
 
     public float moveSpeed;
     public float cappedVelocity;
@@ -56,6 +56,8 @@ public class PlayerMovementController : MonoBehaviour
                 playerBody.velocity = new Vector2(0, playerBody.velocity.y);
             }
         }
+        
+ 
     }
 
     public void Jump()
@@ -79,12 +81,16 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (toggle)
         {
-            crouchCollider.enabled = false;
+            crouchCollider.isTrigger = true;
             isCrouching = true;
         }
-        else if(!toggle)
+        else if(!toggle && ceiling)
         {
-            crouchCollider.enabled = true;
+            crouchCollider.isTrigger = true;
+            isCrouching = true;
+        } else if(!toggle && !ceiling)
+        {
+            crouchCollider.isTrigger = false;
             isCrouching = false;
         }
     }
@@ -96,6 +102,37 @@ public class PlayerMovementController : MonoBehaviour
             onGround = true;
             jumpCounter = 0;
             isJumping = false;
+        }
+
+        
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag + "STAY");
+        if(collision.tag ==("Ceiling"))
+        {
+            ceiling = true;
+        }
+        else
+        {
+            ceiling = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == ("Ceiling"))
+        {
+            ceiling = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == ("Ceiling"))
+        {
+            ceiling = false;
+            Crouch(false);
         }
     }
 
