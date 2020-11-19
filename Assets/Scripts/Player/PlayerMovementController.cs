@@ -77,6 +77,11 @@ public class PlayerMovementController : MonoBehaviour
         //Physics2D.Raycast(groundCheck.position, new Vector2(0, -1f), 2f, groundMask);
     }
 
+   /* private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(groundCheck.position, new Vector3(0, -1, 0));
+    }*/
+
     public void Jump()
     {
         if (jumpCounter < jumpLimit)
