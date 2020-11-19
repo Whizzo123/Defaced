@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 6606872465085703620}
   - component: {fileID: 6606872465085703621}
   - component: {fileID: 8322801029045974769}
+  - component: {fileID: 56583666}
+  - component: {fileID: 56583665}
+  - component: {fileID: 3680812324000687850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -32,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 6606872465085703625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7217637, y: -0.28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.33679, y: 0.33679, z: 0.33679}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -156,7 +159,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 83073895bcbf5544fbbe5ff1fa614039, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -177,6 +180,7 @@ MonoBehaviour:
   hasStrength: 0
   canCrouch: 0
   paused: 0
+  animator: {fileID: 0}
 --- !u!114 &6606872465085703621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +213,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementalDamageObjectTag: ElementalDamage
-  checkpointTag: 
+  checkpointTag: Checkpoint
   hasElementalResistance: 0
   spawn: {fileID: 0}
+--- !u!95 &56583666
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606872465085703625}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 42ff84880535fc44e8387225031224f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &56583665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606872465085703625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd507a622f822fd44bf406ba29a1fc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowersCollected: 0
+  collectedItems: []
+--- !u!114 &3680812324000687850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606872465085703625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f34bbceb72f8c04192ba10404c85fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}

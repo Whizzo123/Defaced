@@ -8,7 +8,7 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D playerBody;
     public BoxCollider2D normalCollider;
     public BoxCollider2D crouchCollider;
-    public Animator animator;
+    
     private PlayerInputController input_Controller;
 
     public float moveSpeed;
@@ -24,14 +24,14 @@ public class PlayerMovementController : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        
         playerBody = GetComponent<Rigidbody2D>();
         input_Controller = GetComponent<PlayerInputController>();
     }
 
     public void Move(float horizontalInput)
     {
-        animator.SetFloat("Velocity", Mathf.Abs(horizontalInput));
+        
         Vector2 moveVelocity = new Vector2(horizontalInput * (moveSpeed * Time.deltaTime), 0);
         if(Mathf.Abs(playerBody.velocity.x) < cappedVelocity)
         {
