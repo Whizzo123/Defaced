@@ -77,7 +77,7 @@ public class PlayerInputController : MonoBehaviour
                 }
             }
         }
-        if(this.transform.position.y < -20f)
+        if(this.transform.position.y < -1000f)
         {
             h_controller.Die();
         }

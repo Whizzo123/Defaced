@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-
+        Debug.Log("Starting dialogue");
         animator.SetBool("isActive", true);
         isActive = true;
         pauseSystem.FreezePlayer();
@@ -67,6 +67,5 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isActive", false);
         isActive = false;
         pauseSystem.UnFreezePlayer();
-        talkingNPC.GiveMask();
     }
 }
