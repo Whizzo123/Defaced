@@ -27,6 +27,7 @@ public class NPC : MonoBehaviour
             if(dialogueManager.isActive)
             {
                 PressE.color = new Color(0, 0, 0, 0);
+                
             }
             else
             {

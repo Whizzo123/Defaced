@@ -8,6 +8,7 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D playerBody;
     public BoxCollider2D normalCollider;
     public BoxCollider2D crouchCollider;
+    public bool isCrouching;
     private PlayerInputController input_Controller;
 
     public float moveSpeed;
@@ -15,20 +16,23 @@ public class PlayerMovementController : MonoBehaviour
     public float jumpPower;
     public float frictionTimeDivider;
     
-    private int jumpCounter;
+    public int jumpCounter;
     public int jumpLimit;
+    public bool isJumping;
 
     private bool onGround;
 
 
     void Start()
     {
+        
         playerBody = GetComponent<Rigidbody2D>();
         input_Controller = GetComponent<PlayerInputController>();
     }
 
     public void Move(float horizontalInput)
     {
+        
         Vector2 moveVelocity = new Vector2(horizontalInput * (moveSpeed * Time.deltaTime), 0);
         if(Mathf.Abs(playerBody.velocity.x) < cappedVelocity)
         {
@@ -38,6 +42,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(playerBody.velocity.y);
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < input_Controller.HorizontalThreshold)
         {
             if (Mathf.Abs(playerBody.velocity.x) > .1f)
@@ -56,8 +61,10 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (jumpCounter < jumpLimit)
         {
+            isJumping = true;
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
             playerBody.velocity += jumpVelocity;
+            
             jumpCounter++;
         }
     }
@@ -68,11 +75,13 @@ public class PlayerMovementController : MonoBehaviour
         {
             normalCollider.enabled = false;
             crouchCollider.enabled = true;
+            isCrouching = true;
         }
         else
         {
             normalCollider.enabled = true;
             crouchCollider.enabled = false;
+            isCrouching = false;
         }
     }
 
@@ -82,6 +91,7 @@ public class PlayerMovementController : MonoBehaviour
         {
             onGround = true;
             jumpCounter = 0;
+            isJumping = false;
         }
     }
 
