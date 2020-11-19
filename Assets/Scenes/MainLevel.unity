@@ -19444,6 +19444,9 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: e61da4ab9aee6b340b5b4bc723a73d6e, type: 3}
 =======
   m_Sprite: {fileID: 21300000, guid: 072448f815ceb6b4cbf89111cd9b4345, type: 3}
+<<<<<<< HEAD
+>>>>>>> parent of 9e68e1b... Merge pull request #14 from Whizzo123/ElectricGenerator
+=======
 >>>>>>> parent of 9e68e1b... Merge pull request #14 from Whizzo123/ElectricGenerator
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19830,6 +19833,9 @@ SpriteRenderer:
 =======
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 072448f815ceb6b4cbf89111cd9b4345, type: 3}
+<<<<<<< HEAD
+>>>>>>> parent of 9e68e1b... Merge pull request #14 from Whizzo123/ElectricGenerator
+=======
 >>>>>>> parent of 9e68e1b... Merge pull request #14 from Whizzo123/ElectricGenerator
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
