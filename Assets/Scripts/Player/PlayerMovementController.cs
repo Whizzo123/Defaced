@@ -11,6 +11,8 @@ public class PlayerMovementController : MonoBehaviour
     public bool isCrouching;
     private PlayerInputController input_Controller;
     public bool ceiling;
+    public Transform groundCheck;
+    public LayerMask groundMask;
 
     public float moveSpeed;
     public float cappedVelocity;
@@ -22,6 +24,7 @@ public class PlayerMovementController : MonoBehaviour
     public int jumpLimit;
     public bool isJumping;
 
+    [SerializeField]
     private bool onGround;
 
 
@@ -56,9 +59,28 @@ public class PlayerMovementController : MonoBehaviour
                 playerBody.velocity = new Vector2(0, playerBody.velocity.y);
             }
         }
-        
+
+
  
     }
+
+    private void FixedUpdate()
+    {
+        //onGround = Physics2D.Linecast(groundCheck.position, new Vector2(0, -2f));
+        //onGround = Physics2D.Raycast(groundCheck.position, new Vector2(0,-2f));
+        //onGround = Physics2D.OverlapCircle(groundCheck.position, 0.15f, groundMask);
+        if (Physics2D.Raycast(groundCheck.position, new Vector2(0, -1f), 0.5f, groundMask))
+         {
+            Debug.Log("Grounded");
+        }
+
+        //Physics2D.Raycast(groundCheck.position, new Vector2(0, -1f), 2f, groundMask);
+    }
+
+   /* private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(groundCheck.position, new Vector3(0, -1, 0));
+    }*/
 
     public void Jump()
     {
@@ -95,22 +117,11 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if((other.gameObject.tag == ("Ground") || (other.gameObject.GetComponent<Pushable>() && other.gameObject.transform.position.y < this.transform.position.y)))
-        {
-            onGround = true;
-            jumpCounter = 0;
-            isJumping = false;
-        }
-
-        
-    }
-
+    #region ceilingCheck
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(collision.tag + "STAY");
-        if(collision.tag ==("Ceiling"))
+        //Debug.Log(collision.tag + "STAY");
+        if (collision.tag == ("Ceiling"))
         {
             ceiling = true;
         }
@@ -134,6 +145,21 @@ public class PlayerMovementController : MonoBehaviour
             ceiling = false;
             Crouch(false);
         }
+    }
+#endregion
+
+
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if((other.gameObject.tag == ("Ground") || (other.gameObject.GetComponent<Pushable>() && other.gameObject.transform.position.y < this.transform.position.y)))
+        {
+            onGround = true;
+            jumpCounter = 0;
+            isJumping = false;
+        }
+
+        
     }
 
     void OnCollisionExit2D(Collision2D other)
