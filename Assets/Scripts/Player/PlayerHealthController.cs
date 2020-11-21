@@ -11,8 +11,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public string elementalDamageObjectTag;
     public string checkpointTag;
-    private GameObject lastCheckpoint;
-    public GameObject spawn;
+    private GameObject spawn;
     private AnimationHandler animHandler;
     private PlayerInputController input_controller;
     private bool markForDeath;
@@ -36,7 +35,7 @@ public class PlayerHealthController : MonoBehaviour
 
     void Start()
     {
-        lastCheckpoint = spawn;
+        spawn = GameObject.FindGameObjectWithTag("Respawn");
         animHandler = GetComponent<AnimationHandler>();
         markForDeath = false;
         input_controller = GetComponent<PlayerInputController>();
@@ -44,7 +43,9 @@ public class PlayerHealthController : MonoBehaviour
 
     public void Die()
     {
-        this.transform.position = lastCheckpoint.transform.position;
+        Debug.Log("About to teleport");
+        this.gameObject.transform.position = new Vector2(-2.2f, 0.1f);
+        Debug.Log("Teleported");
         isDead = false;
     }
 
@@ -55,7 +56,7 @@ public class PlayerHealthController : MonoBehaviour
             Debug.Log("Inside death state");
             AnimatorStateInfo info = animHandler.animator.GetCurrentAnimatorStateInfo(0);
             Debug.Log("Normalized time: " + info.normalizedTime);
-            if(info.normalizedTime > .99f)
+            if(info.normalizedTime > .90f)
             {
                 Die();
             }
@@ -73,10 +74,7 @@ public class PlayerHealthController : MonoBehaviour
                 isDead = true;
             }
         }
-        else if(other.gameObject.tag == checkpointTag)
-        {
-            lastCheckpoint = other.gameObject;
-        }
+       
     }
 
     void OnCollisionExit2D(Collision2D other)
