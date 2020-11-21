@@ -15,6 +15,7 @@ public class PlayerHealthController : MonoBehaviour
     private AnimationHandler animHandler;
     private PlayerInputController input_controller;
     private bool markForDeath;
+    public GameObject deathScreen;
     public bool isDead
     {
         get
@@ -28,6 +29,7 @@ public class PlayerHealthController : MonoBehaviour
             {
                 input_controller.audio.PlaySound("Death", this.gameObject);
                 animHandler.animator.SetTrigger("Death");
+                deathScreen.SetActive(true);
                 markForDeath = value;
             }
         }
@@ -59,6 +61,7 @@ public class PlayerHealthController : MonoBehaviour
             if(info.normalizedTime > .90f)
             {
                 Die();
+                deathScreen.SetActive(false);
             }
         }
     }
