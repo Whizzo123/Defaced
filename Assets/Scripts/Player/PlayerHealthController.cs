@@ -52,9 +52,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("About to teleport");
         this.gameObject.transform.position = checkpoint.position;
-        Debug.Log("Teleported");
         isDead = false;
     }
 
@@ -62,9 +60,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(animHandler.animator.GetCurrentAnimatorStateInfo(0).IsName("DEATH"))
         {
-            Debug.Log("Inside death state");
             AnimatorStateInfo info = animHandler.animator.GetCurrentAnimatorStateInfo(0);
-            Debug.Log("Normalized time: " + info.normalizedTime);
             if(info.normalizedTime > .90f)
             {
                 Die();
@@ -80,7 +76,6 @@ public class PlayerHealthController : MonoBehaviour
         {
             if (!(input_controller.switchMask.currentMask == MASKS.ELEMENTALRESISTANCE) && !other.gameObject.GetComponent<ElectricBlock>().IsToggled())
             {
-                Debug.Log("Player dead");
                 isDead = true;
             }
         }

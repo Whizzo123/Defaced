@@ -16,9 +16,9 @@ public class ElectricBlock : MonoBehaviour
     {
         gameObject.tag = "ElementalDamage";
         switchMask = FindObjectOfType<SwitchMask>();
-        myCollider = GetComponent<BoxCollider2D>();
+        myCollider = GetComponent<Collider2D>();
         if (myCollider == null)
-            Debug.Log("GameObject " + gameObject.name + " has no collider");
+            Debug.LogError("GameObject " + gameObject.name + " has no collider");
         player = FindObjectOfType<PlayerHealthController>();
     }
 
@@ -40,9 +40,7 @@ public class ElectricBlock : MonoBehaviour
         {
             if (switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
             {
-
                 StartCoroutine(ToggleElectricity());
-
             }
             else if (switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
             {
@@ -57,9 +55,7 @@ public class ElectricBlock : MonoBehaviour
     {
         isToggled = true;
         gameObject.tag = "Ground";
-        Debug.Log("off");
         yield return new WaitForSeconds(10);
-        Debug.Log("On");
         gameObject.tag = "ElementalDamage";
         isToggled = false;
     }

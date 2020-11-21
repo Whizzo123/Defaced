@@ -26,10 +26,8 @@ public class Generator : MonoBehaviour
     }
     public void StartGenerator()
     {
-        Debug.Log("Started");
         for (int i = 0; i < interactables.Length; i++)
         {
-            Debug.Log("CALLED");
             Interactable interactable = interactables[i].GetComponent<Interactable>();
             interactable.Toggle();
             isActive = true;
@@ -38,7 +36,6 @@ public class Generator : MonoBehaviour
         StartCoroutine(RunDuration());
         for (int i = 0; i < interactables.Length; i++)
         {
-            Debug.Log("CALLED");
             Interactable interactable = interactables[i].GetComponent<Interactable>();
             interactable.Toggle();
             isActive = false;

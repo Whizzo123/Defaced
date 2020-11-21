@@ -22,7 +22,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (talkCounterCurrent < talkCounter)
             {
-                //FindObjectOfType<DialogueManager>().StartDialogue(talkCounterDialogue[talkCounterCurrent]);
+               
             }
             else
                 thisNPC.GiveMask();

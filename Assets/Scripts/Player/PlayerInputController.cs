@@ -37,6 +37,19 @@ public class PlayerInputController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && FindObjectOfType<DialogueManager>().isActive == false)
+        {
+            if (paused == false)
+            {
+                FindObjectOfType<PauseSystem>().PauseGame();
+                paused = true;
+            }
+            else
+            {
+                FindObjectOfType<PauseSystem>().ResumeGame();
+                paused = false;
+            }
+        }
         animator.SetFloat("Velocity", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         if (!paused && !GetComponent<PlayerHealthController>().isDead)
         {
@@ -103,12 +116,10 @@ public class PlayerInputController : MonoBehaviour
     {
         if(switchMask.currentMask == MASKS.STRENGTH)
         {
-            Debug.Log("Has STrenght");
             if(other.gameObject.tag == "Pushable")
             {
                 if (other.gameObject.GetComponent<Rigidbody2D>())
                 {
-                    Debug.Log("Pushing");
                     other.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                     objectBeingPushed = other.gameObject;
                 }
@@ -119,7 +130,6 @@ public class PlayerInputController : MonoBehaviour
             }
             if (other.gameObject.tag == "Breakable")
             {
-                Debug.Log("Object In To Destroy");
                 objectBeingBroken = other.gameObject;
             }
         }
@@ -127,7 +137,6 @@ public class PlayerInputController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name + " HELLO THERE");
         if(other.gameObject.GetComponent<Lever>())
         {
             lever = other.gameObject.GetComponent<Lever>();
@@ -140,7 +149,6 @@ public class PlayerInputController : MonoBehaviour
         {
             if (other.gameObject.tag == "Breakable")
             {
-                Debug.Log("Object In To Destroy");
                 objectBeingBroken = other.gameObject;
             }
         }
@@ -172,22 +180,7 @@ public class PlayerInputController : MonoBehaviour
                 objectBeingPushed = null;
             }
         }
-       /* 
-        if (other.gameObject.tag == "Breakable")
-        {
-            if (other.gameObject == objectBeingBroken)
-            {
-                Debug.Log("Object OUT TO DESTROY");
-                objectBeingBroken = null;
-            }
-        }
-       */
-        /*
-                    if (other.gameObject.tag == "Breakable")
-            {
-                objectBeingBroken = other.gameObject;
-            }
-        */
+    
     }
 
 }

@@ -15,10 +15,7 @@ public class Platform : Interactable
 
     public override void Toggle()
     {
-        
-        Debug.Log("TOGGLE");
         move = !move;
-        Debug.Log(move);
     }
 
     void Start()

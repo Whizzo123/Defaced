@@ -31,19 +31,18 @@ public class PlayerMovementController : MonoBehaviour
 
     /*
     Cleaner Code
-    Jumping physics(can launch yourself, something to do with physics adding physics. Cyp: When double jump, reset velocity to jump velocity)
-    Movement physics
-    Can get stuck on side of platforms
-    Blue Just gives mask straight away
-    Dialogue trees
-    Esc to pause
-    Esc to exit dialogue
-    sound continues to play while in dialogue
-    e on dialogue playing loads full dialogue instead of going to next dialogue
-    PLAYER WAS THE IMPOSTER
-    New Background Parralax
-
-    Crates can be electrified
+    1. Jumping physics(can launch yourself, something to do with physics adding physics. Cyp: When double jump, reset velocity to jump velocity) - DONE
+    2. Movement physics - CHECK MAYBE DONE
+    3. Can get stuck on side of platforms - CANT REPLICATE
+    4. Blue Just gives mask straight away
+    5. Dialogue trees
+    6. Esc to pause - DONE
+    7. Esc to exit dialogue
+    8. Sound continues to play while in dialogue
+    9. e on dialogue playing loads full dialogue instead of going to next dialogue
+    10. PLAYER WAS THE IMPOSTER
+    11. New Background Parralax
+    12. Crates can be electrified
 
      */
 
@@ -92,7 +91,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (Physics2D.Raycast(groundCheck.position, new Vector2(0, -0.2f), 0.1f, groundMask) && playerBody.velocity.y <= 1)
          {
-            Debug.Log("IAMGORUDN");
             onGround = true;
             isJumping = false;
             jumpCounter = 0;
@@ -115,11 +113,10 @@ public class PlayerMovementController : MonoBehaviour
         if (jumpCounter < jumpLimit)
         {
             isJumping = true;
-            Vector2 jumpVelocity = new Vector2(0, jumpPower);
-            playerBody.velocity += jumpVelocity;
+            Vector2 jumpVelocity = new Vector2(playerBody.velocity.x, jumpPower);
+            playerBody.velocity = jumpVelocity;
             if (Mathf.Abs(playerBody.velocity.y) > cappedJumpVelocity)
             {
-                Debug.Log("Exceeding jump cap velocity is " + Mathf.Abs(playerBody.velocity.y) + " capped velocity " + cappedJumpVelocity);
                 playerBody.velocity = new Vector2(playerBody.velocity.x, cappedJumpVelocity);
             }
 
@@ -148,7 +145,6 @@ public class PlayerMovementController : MonoBehaviour
     #region ceilingCheck
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Debug.Log(collision.tag + "STAY");
         if (collision.tag == ("Ceiling"))
         {
             ceiling = true;
@@ -176,23 +172,4 @@ public class PlayerMovementController : MonoBehaviour
     }
 #endregion
 
-
-    /*
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if((other.gameObject.tag == ("Ground") || (other.gameObject.GetComponent<Pushable>() && other.gameObject.transform.position.y < this.transform.position.y)))
-        {
-            onGround = true;
-            jumpCounter = 0;
-            isJumping = false;
-        }
-
-        
-    }
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-        onGround = false;
-    }
-    */
 }
