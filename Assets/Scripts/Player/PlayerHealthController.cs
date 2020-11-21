@@ -24,9 +24,13 @@ public class PlayerHealthController : MonoBehaviour
         }
         set
         {
-            markForDeath = value;
-            if (markForDeath)
+            
+            if (value == true && markForDeath == false)
+            {
+                input_controller.audio.PlaySound("Death", this.gameObject);
                 animHandler.animator.SetTrigger("Death");
+                markForDeath = value;
+            }
         }
     }
 

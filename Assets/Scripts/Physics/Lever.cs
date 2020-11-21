@@ -11,7 +11,7 @@ public class Lever : MonoBehaviour
 
     public void PullLever()
     {
-
+        FindObjectOfType<AudioSystem>().PlaySound("Switch", this.gameObject);
         for (int i = 0; i < interactables.Length; i++)
         {
             Debug.Log("CALLED");

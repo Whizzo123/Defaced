@@ -20,6 +20,7 @@ public class PlayerInputController : MonoBehaviour
     public Animator animator;
     public bool enableCheats;
     public MaskWheelSprite[] sprites;
+    public AudioSystem audio { get; private set; }
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerInputController : MonoBehaviour
         FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.CROUCH, sprites[0]);
         paused = false;
         switchMask.Switch(0);
+        audio = FindObjectOfType<AudioSystem>();
         
     }
 
@@ -42,12 +44,30 @@ public class PlayerInputController : MonoBehaviour
             {
                 //Move player
                 mv_controller.Move(Input.GetAxisRaw("Horizontal"));
-                
+                if (!audio.IsSourcePlayingSound("Steps", this.gameObject) && mv_controller.onGround)
+                {
+                    audio.PlaySound("Steps", this.gameObject, true);
+                }
+                if(audio.IsSourcePlayingSound("Steps", this.gameObject) && !mv_controller.onGround)
+                {
+                    audio.StopSound(this.gameObject);
+                }
+            }
+            else
+            {
+                if(audio.IsSourcePlayingSound("Steps", this.gameObject))
+                {
+                    audio.StopSound(this.gameObject);
+                }
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //Player jump
                 mv_controller.Jump();
+                if (audio.IsSourcePlayingSound("Steps", this.gameObject))
+                {
+                    audio.StopSound(this.gameObject);
+                }
             }
             if (Input.GetKeyDown(KeyCode.E))
             {

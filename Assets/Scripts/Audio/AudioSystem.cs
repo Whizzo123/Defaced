@@ -19,7 +19,7 @@ public class AudioSystem : MonoBehaviour
         currentPlayingSources = new List<AudioSource>();
     }
 
-    public void PlaySound(string soundEffectName, GameObject playingSoundGO)
+    public void PlaySound(string soundEffectName, GameObject playingSoundGO, bool loop = false)
     {
         AudioSource source = playingSoundGO.GetComponent<AudioSource>();
         if(source != null)
@@ -45,7 +45,42 @@ public class AudioSystem : MonoBehaviour
         if (clip != null)
         {
             source.clip = clip;
+            source.loop = loop;
             source.Play();
+        }
+    }
+
+    public void StopSound(GameObject playingSoundGO)
+    {
+        AudioSource source = playingSoundGO.GetComponent<AudioSource>();
+        if(source != null)
+        {
+            source.Stop();
+        }
+        else
+        {
+            Debug.LogError("Trying to stop a sound on an object without an audio source component");
+        }
+    }
+
+    public bool IsSourcePlayingSound(string sound, GameObject playingSoundGO)
+    {
+        AudioSource source = playingSoundGO.GetComponent<AudioSource>();
+        if (source != null)
+        {
+            if(source.isPlaying && source.clip == FindClip(sound))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            Debug.LogError("Trying to check a gameobject without a audio source component");
+            return false;
         }
     }
 

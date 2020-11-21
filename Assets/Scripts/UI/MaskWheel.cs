@@ -10,7 +10,7 @@ public class MaskWheel : MonoBehaviour
     private MaskWheelComponent[] wheelSegments;
     private MaskWheelComponent selectedSegment;
 
-    void Start()
+    void Awake()
     {
         container.SetActive(false);
         wheelSegments = container.GetComponentsInChildren<MaskWheelComponent>(true);

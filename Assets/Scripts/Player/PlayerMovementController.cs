@@ -25,7 +25,7 @@ public class PlayerMovementController : MonoBehaviour
     public bool isJumping;
 
     [SerializeField]
-    private bool onGround;
+    public bool onGround { get; private set; }
 
 
     void Start()
