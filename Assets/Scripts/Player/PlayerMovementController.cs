@@ -27,6 +27,30 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     public bool onGround { get; private set; }
 
+    #region NEED TO FIX
+
+    /*
+    Cleaner Code
+    Jumping physics(can launch yourself, something to do with physics adding physics. Cyp: When double jump, reset velocity to jump velocity)
+    Movement physics
+    Can get stuck on side of platforms
+    Blue Just gives mask straight away
+    Dialogue trees
+    Esc to pause
+    Esc to exit dialogue
+    sound continues to play while in dialogue
+    e on dialogue playing loads full dialogue instead of going to next dialogue
+    PLAYER WAS THE IMPOSTER
+    New Background Parralax
+
+    Crates can be electrified
+
+     */
+
+    #endregion
+
+
+
 
     void Start()
     {
@@ -66,10 +90,22 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Physics2D.Raycast(groundCheck.position, new Vector2(0, -1f), 0.5f, groundMask))
+        if (Physics2D.Raycast(groundCheck.position, new Vector2(0, -0.2f), 0.1f, groundMask) && playerBody.velocity.y <= 1)
          {
-            Debug.Log("Grounded");
+            Debug.Log("IAMGORUDN");
+            onGround = true;
+            isJumping = false;
+            jumpCounter = 0;
         }
+        else
+        {
+            onGround = false;
+        }
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(groundCheck.position, new Vector3(0, -0.2f));
     }
 
 
@@ -141,7 +177,7 @@ public class PlayerMovementController : MonoBehaviour
 #endregion
 
 
-    
+    /*
     void OnCollisionEnter2D(Collision2D other)
     {
         if((other.gameObject.tag == ("Ground") || (other.gameObject.GetComponent<Pushable>() && other.gameObject.transform.position.y < this.transform.position.y)))
@@ -158,5 +194,5 @@ public class PlayerMovementController : MonoBehaviour
     {
         onGround = false;
     }
-
+    */
 }

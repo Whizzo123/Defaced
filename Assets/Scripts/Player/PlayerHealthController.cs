@@ -11,11 +11,12 @@ public class PlayerHealthController : MonoBehaviour
 
     public string elementalDamageObjectTag;
     public string checkpointTag;
-    private GameObject spawn;
     private AnimationHandler animHandler;
     private PlayerInputController input_controller;
     private bool markForDeath;
     public GameObject deathScreen;
+    public Transform checkpoint;
+
     public bool isDead
     {
         get
@@ -32,21 +33,27 @@ public class PlayerHealthController : MonoBehaviour
                 deathScreen.SetActive(true);
                 markForDeath = value;
             }
+            else
+            {
+                deathScreen.SetActive(false);
+                markForDeath = value;
+            }
         }
     }
 
     void Start()
     {
-        spawn = GameObject.FindGameObjectWithTag("Respawn");
+        checkpoint = GameObject.FindGameObjectWithTag("Respawn").transform;
         animHandler = GetComponent<AnimationHandler>();
         markForDeath = false;
         input_controller = GetComponent<PlayerInputController>();
+
     }
 
     public void Die()
     {
         Debug.Log("About to teleport");
-        this.gameObject.transform.position = new Vector2(-2.2f, 0.1f);
+        this.gameObject.transform.position = checkpoint.position;
         Debug.Log("Teleported");
         isDead = false;
     }
@@ -78,6 +85,9 @@ public class PlayerHealthController : MonoBehaviour
             }
         }
        
+        if(other.gameObject.tag == "Respawn") {
+            checkpoint = other.gameObject.transform;
+        }
     }
 
     void OnCollisionExit2D(Collision2D other)

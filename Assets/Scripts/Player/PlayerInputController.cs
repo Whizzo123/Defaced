@@ -71,8 +71,11 @@ public class PlayerInputController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if(objectBeingBroken != null)
+                if (objectBeingBroken != null)
+                {
+                    Debug.Log("Object In To Destroy");
                     Destroy(objectBeingBroken);
+                }
                 if (lever != null)
                     lever.PullLever();
                 if (gen != null)
@@ -110,10 +113,13 @@ public class PlayerInputController : MonoBehaviour
                     objectBeingPushed = other.gameObject;
                 }
                 else
+                {
                     Debug.LogError("You've forgotten to attach a rigidbody to this!!");
+                }
             }
             if (other.gameObject.tag == "Breakable")
             {
+                Debug.Log("Object In To Destroy");
                 objectBeingBroken = other.gameObject;
             }
         }
@@ -134,6 +140,7 @@ public class PlayerInputController : MonoBehaviour
         {
             if (other.gameObject.tag == "Breakable")
             {
+                Debug.Log("Object In To Destroy");
                 objectBeingBroken = other.gameObject;
             }
         }
@@ -165,17 +172,22 @@ public class PlayerInputController : MonoBehaviour
                 objectBeingPushed = null;
             }
         }
+       /* 
         if (other.gameObject.tag == "Breakable")
         {
             if (other.gameObject == objectBeingBroken)
             {
+                Debug.Log("Object OUT TO DESTROY");
                 objectBeingBroken = null;
             }
         }
+       */
+        /*
                     if (other.gameObject.tag == "Breakable")
             {
                 objectBeingBroken = other.gameObject;
             }
+        */
     }
 
 }
