@@ -13,24 +13,26 @@ public class DialogueManager : MonoBehaviour
     public bool isActive = false;
     private Queue<string> sentences;
     public NPC talkingNPC;
+    private Dictionary<string, Dialogue> characterDialogues;
 
     void Start()
     {
         pauseSystem = FindObjectOfType<PauseSystem>();
         sentences = new Queue<string>();
+        characterDialogues = DialogueImporter.ImportCharacterDialogue();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(string characterName)
     {
         Debug.Log("Starting dialogue");
         animator.SetBool("isActive", true);
         isActive = true;
         pauseSystem.FreezePlayer();
-        nameText.text = dialogue.name;
+        nameText.text = characterName;
         npcPortrait.sprite = talkingNPC.dialogueSprite;
 
         sentences.Clear();
-
+        Dialogue dialogue = characterDialogues[characterName];
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue taskCompletionDialogue;
-    public Dialogue taskUnfinishedDialogue;
+    public string characterName;
     public Dialogue[] talkCounterDialogue;
     private int talkCounter;
     private int talkCounterCurrent;
@@ -23,7 +22,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (talkCounterCurrent < talkCounter)
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(talkCounterDialogue[talkCounterCurrent]);
+                //FindObjectOfType<DialogueManager>().StartDialogue(talkCounterDialogue[talkCounterCurrent]);
             }
             else
                 thisNPC.GiveMask();
@@ -32,12 +31,12 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (thisNPC.prerequisite == null || thisNPC.prerequisite.CheckAgainst(thisNPC.player.GetComponent<PlayerCollectionController>().collectedItems))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(taskCompletionDialogue);
+                FindObjectOfType<DialogueManager>().StartDialogue(characterName);
                 thisNPC.GiveMask();
             }
             else
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(taskUnfinishedDialogue);
+                FindObjectOfType<DialogueManager>().StartDialogue(characterName);
             }
         }
     }

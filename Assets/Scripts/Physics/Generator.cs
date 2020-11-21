@@ -4,9 +4,16 @@ public class Generator : MonoBehaviour
 {
     public bool isActive;
     public GameObject[] interactables;
+    private SwitchMask switchMask;
+
+    void Start()
+    {
+        switchMask = FindObjectOfType<SwitchMask>();
+    }
+
     public void AttempToStart()
     {
-        if (FindObjectOfType<PlayerHealthController>().hasElementalResistance && !isActive)
+        if (switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && !isActive)
         {
             Debug.Log("GEN");
             if (interactables != null)

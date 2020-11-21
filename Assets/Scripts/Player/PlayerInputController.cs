@@ -10,11 +10,10 @@ public class PlayerInputController : MonoBehaviour
     public float HorizontalThreshold;
     private PlayerMovementController mv_controller;
     private PlayerHealthController h_controller;
+    public SwitchMask switchMask { get; private set; }
     private Rigidbody2D playerBody;
-    public bool hasStrength;
     private GameObject objectBeingPushed;
     private GameObject objectBeingBroken;
-    public bool canCrouch;
     public bool paused;
     private Lever lever;
     private Generator gen;
@@ -27,20 +26,11 @@ public class PlayerInputController : MonoBehaviour
         animator = GetComponent<Animator>();
         mv_controller = GetComponent<PlayerMovementController>();
         h_controller = GetComponent<PlayerHealthController>();
-        if (!enableCheats)
-        {
-            hasStrength = false;
-            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.CROUCH, sprites[0]);
-            paused = false;
-        }
-        else
-        {
-            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.CROUCH, sprites[0]);
-            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.DOUBLEJUMP, sprites[1]);
-            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.STRENGTH, sprites[2]);
-            FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.ELEMENTALRESISTANCE, sprites[3]);
-        }
-        FindObjectOfType<SwitchMask>().Switch(0);
+        switchMask = FindObjectOfType<SwitchMask>();
+        FindObjectOfType<MaskWheel>().AddMaskToWheel(MASKS.CROUCH, sprites[0]);
+        paused = false;
+        switchMask.Switch(0);
+        
     }
 
     void Update()
@@ -68,7 +58,7 @@ public class PlayerInputController : MonoBehaviour
                 if (gen != null)
                     gen.AttempToStart();
             }
-            if (canCrouch)
+            if (switchMask.currentMask == MASKS.CROUCH)
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
@@ -88,7 +78,7 @@ public class PlayerInputController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(hasStrength)
+        if(switchMask.currentMask == MASKS.STRENGTH)
         {
             Debug.Log("Has STrenght");
             if(other.gameObject.tag == "Pushable")
@@ -120,7 +110,7 @@ public class PlayerInputController : MonoBehaviour
         {
             gen = other.gameObject.GetComponent<Generator>();
         }
-        if (hasStrength)
+        if (switchMask.currentMask == MASKS.STRENGTH)
         {
             if (other.gameObject.tag == "Breakable")
             {

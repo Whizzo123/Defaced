@@ -1,0 +1,35 @@
+M: Me: The military quarters. The way out should be right around here! Just a bit further up…
+
+M: *gets crate thrown at them* Me: Woah! Hey, I'm not trying to attack you! I just need to get past
+
+…
+
+M: Me: Did you hear me?
+
+…
+
+M: *gets to the top* 
+
+C: KH0N3: So… I failed. All I can do here is try to stop people from getting out, and I can’t even do that. I should have known. 
+M: Me: It’s your job to guard the exit, then? 
+C: KH0N3: Ha. No. I gave up on trying to help them a long time ago. I’m doing this for your own good. To stop you getting hurt.
+M: Me: Why would we get hurt out there?
+C: KH0N3: The outside is dangerous, random, spontaneous. You can’t know what you will find out there. At least down here nobody can cause trouble. 
+M: Me: We’re miserable down here. Everyone acts like they’re ok but, really, they’re in pain. No one can be happy living like this. It’s impossible. We only put up with it because we don’t have the option to be anything else. 
+C: KH0N3: Do you really think so?
+M: Me: Everyone is hiding behind a mask! Haven’t you seen? 
+…
+...
+C: KH0N3: I know it’s dangerous out there. But if you’re so unhappy… if everyone is...  Maybe the real danger is down here after all. 
+M: Me: … Will you let us out, then? 
+C: KH0N3: Alright. If there’s no hope here, at least I know I helped someone escape. 
+M: Me: You could come with us.
+C: KH0N3: What? 
+M: Me: There’s a few of us going to the surface.  Somewhere we can just be ourselves.
+C: KH0N3: I wouldn’t be any use to you. I failed at my job.
+M: Me: You don’t have to judge yourself by their standards! There’s lots of things you could be great at, you just haven’t tried them yet. 
+I think you’d be a great part of our team.
+…
+C: KH0N3: Fine. But take this, please. I don’t want to have to use it ever again. 
+I: [You have obtained the red mask! You can now destroy walls and push crates by pressing “E”.]
+

@@ -66,24 +66,16 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //onGround = Physics2D.Linecast(groundCheck.position, new Vector2(0, -2f));
-        //onGround = Physics2D.Raycast(groundCheck.position, new Vector2(0,-2f));
-        //onGround = Physics2D.OverlapCircle(groundCheck.position, 0.15f, groundMask);
         if (Physics2D.Raycast(groundCheck.position, new Vector2(0, -1f), 0.5f, groundMask))
          {
             Debug.Log("Grounded");
         }
-
-        //Physics2D.Raycast(groundCheck.position, new Vector2(0, -1f), 2f, groundMask);
     }
 
-   /* private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(groundCheck.position, new Vector3(0, -1, 0));
-    }*/
 
     public void Jump()
     {
+        jumpLimit = input_Controller.switchMask.currentMask == MASKS.DOUBLEJUMP ? 2 : 1;
         if (jumpCounter < jumpLimit)
         {
             isJumping = true;

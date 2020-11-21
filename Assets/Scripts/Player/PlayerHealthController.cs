@@ -11,10 +11,10 @@ public class PlayerHealthController : MonoBehaviour
 
     public string elementalDamageObjectTag;
     public string checkpointTag;
-    public bool hasElementalResistance;
     private GameObject lastCheckpoint;
     public GameObject spawn;
     private AnimationHandler animHandler;
+    private PlayerInputController input_controller;
     private bool markForDeath;
     public bool isDead
     {
@@ -32,10 +32,10 @@ public class PlayerHealthController : MonoBehaviour
 
     void Start()
     {
-        hasElementalResistance = false;
         lastCheckpoint = spawn;
         animHandler = GetComponent<AnimationHandler>();
         markForDeath = false;
+        input_controller = GetComponent<PlayerInputController>();
     }
 
     public void Die()
@@ -63,7 +63,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(other.gameObject.tag == elementalDamageObjectTag)
         {
-            if (!hasElementalResistance && !other.gameObject.GetComponent<ElectricBlock>().IsToggled())
+            if (!(input_controller.switchMask.currentMask == MASKS.ELEMENTALRESISTANCE) && !other.gameObject.GetComponent<ElectricBlock>().IsToggled())
             {
                 Debug.Log("Player dead");
                 isDead = true;

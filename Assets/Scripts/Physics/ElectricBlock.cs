@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ElectricBlock : MonoBehaviour
 {
-    public CapsuleCollider2D playerCollider;
+    private GameObject playerGO;
     private SwitchMask switchMask;
     private PlayerHealthController player;
+    private Collider2D myCollider;
     bool isToggled;
-    private int playerExit = 0;
     public bool isPeriodic;
     public float periodicTime;
     private float periodicTimeCounter;
@@ -16,8 +16,10 @@ public class ElectricBlock : MonoBehaviour
     {
         gameObject.tag = "ElementalDamage";
         switchMask = FindObjectOfType<SwitchMask>();
+        myCollider = GetComponent<BoxCollider2D>();
+        if (myCollider == null)
+            Debug.Log("GameObject " + gameObject.name + " has no collider");
         player = FindObjectOfType<PlayerHealthController>();
-        playerCollider = FindObjectOfType<PlayerInputController>().gameObject.GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -34,15 +36,15 @@ public class ElectricBlock : MonoBehaviour
 
         }
         else
-        if (playerCollider != null)
+        if (playerGO != null)
         {
-            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(playerCollider) && switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
+            if (switchMask.currentMask == MASKS.ELEMENTALRESISTANCE && isToggled == false)
             {
 
                 StartCoroutine(ToggleElectricity());
 
             }
-            else if (playerExit == 1 && switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
+            else if (switchMask.currentMask != MASKS.ELEMENTALRESISTANCE && gameObject.tag == "ElementalDamage")
             {
                 if(!player.isDead)
                     player.isDead = true;
@@ -62,13 +64,19 @@ public class ElectricBlock : MonoBehaviour
         isToggled = false;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        playerExit--;
+        if(collision.gameObject.GetComponent<PlayerInputController>())
+        {
+            playerGO = null;
+        }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        playerExit++;
+        if(collision.gameObject.GetComponent<PlayerInputController>())
+        {
+            playerGO = collision.gameObject;
+        }
     }
 
     public bool IsToggled()
