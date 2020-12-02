@@ -37,7 +37,7 @@ public class PlayerMovementController : MonoBehaviour
     4. Blue Just gives mask straight away
     5. Dialogue trees
     6. Esc to pause - DONE
-    7. Esc to exit dialogue
+    7. Esc to exit dialogue - DONE
     8. Sound continues to play while in dialogue
     9. e on dialogue playing loads full dialogue instead of going to next dialogue
     10. PLAYER WAS THE IMPOSTER
