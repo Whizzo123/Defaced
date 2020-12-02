@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string characterName)
     {
+        FindObjectOfType<PlayerInputController>().m_audio.StopSound(FindObjectOfType<PlayerInputController>().gameObject);
         animator.SetBool("isActive", true);
         isActive = true;
         pauseSystem.FreezePlayer();

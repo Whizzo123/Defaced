@@ -38,8 +38,8 @@ public class PlayerMovementController : MonoBehaviour
     5. Dialogue trees
     6. Esc to pause - DONE
     7. Esc to exit dialogue - DONE
-    8. Sound continues to play while in dialogue
-    9. e on dialogue playing loads full dialogue instead of going to next dialogue
+    8. Sound continues to play while in dialogue - FIXED
+    9. e on dialogue playing loads full dialogue instead of going to next dialogue - MAYBE NOT POSSIBLE WITH CURRENT IMPLEMENTATION
     10. PLAYER WAS THE IMPOSTER
     11. New Background Parralax
     12. Crates can be electrified

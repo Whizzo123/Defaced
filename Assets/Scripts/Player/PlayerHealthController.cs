@@ -28,7 +28,7 @@ public class PlayerHealthController : MonoBehaviour
             
             if (value == true && markForDeath == false)
             {
-                input_controller.audio.PlaySound("Death", this.gameObject);
+                input_controller.m_audio.PlaySound("Death", this.gameObject);
                 animHandler.animator.SetTrigger("Death");
                 deathScreen.SetActive(true);
                 markForDeath = value;
